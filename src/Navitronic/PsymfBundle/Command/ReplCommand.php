@@ -22,6 +22,13 @@ class ReplCommand extends ContainerAwareCommand
         $application->setCatchExceptions(false);
         $application->setAutoExit(false);
         $container = $this->getContainer();
-        $result = \Psy\Shell::debug(['container' => $container]);
+
+        $shell = new Shell();
+
+        $shell->debug([
+            'container' => $container,
+            'kernel' => $container->get('kernel'),
+            'parameters' => $container->getParameterBag()->all(),
+        ]);
     }
 }
