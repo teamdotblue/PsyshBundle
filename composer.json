@@ -1,6 +1,6 @@
 {
-    "name": "navitronic/psymf",
-    "description": "A command line REPL bundle for Symfony using psysh",
+    "name": "navitronic/psysh",
+    "description": "A port of the PHP REPL PsySH for Symfony.",
     "require": {
         "psy/psysh": "0.4.*",
         "symfony/framework-bundle": "~2.6"

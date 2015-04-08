@@ -1,21 +1,27 @@
 <?php
 
-namespace Navitronic\PsymfBundle\Command;
+namespace Navitronic\PsyshBundle\Command;
 
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ReplCommand extends ContainerAwareCommand
+class PsyshCommand extends ContainerAwareCommand
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
-            ->setName('repl')
-            ->setDescription('Start a REPL');
+            ->setName('psysh')
+            ->setDescription('Start PsySH for Symfony');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $application = $this->getApplication();
@@ -25,10 +31,12 @@ class ReplCommand extends ContainerAwareCommand
 
         $shell = new Shell();
 
-        $shell->debug([
-            'container' => $container,
-            'kernel' => $container->get('kernel'),
-            'parameters' => $container->getParameterBag()->all(),
-        ]);
+        $shell->debug(
+            [
+                'container'  => $container,
+                'kernel'     => $container->get('kernel'),
+                'parameters' => $container->getParameterBag()->all(),
+            ]
+        );
     }
 }
