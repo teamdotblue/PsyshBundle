@@ -1,9 +1,10 @@
 {
     "name": "navitronic/psysh",
     "description": "A port of the PHP REPL PsySH for Symfony.",
+    "minimum-stability": "dev",
     "require": {
         "psy/psysh": "0.4.*",
-        "symfony/framework-bundle": "~2.6"
+        "symfony/framework-bundle": "2.7.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5"

@@ -3,6 +3,7 @@
 namespace Navitronic\PsyshBundle\Tests\Command;
 
 use Navitronic\PsyshBundle\Command\PsyshCommand;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * Class PsyshCommandTest
@@ -15,8 +16,10 @@ class PsyshCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Test that the shell stats properly.
      */
-    public function testCommand()
+    public function testExecute()
     {
-        new PsyshCommand();
+        $command = new PsyshCommand();
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([]);
     }
 }
