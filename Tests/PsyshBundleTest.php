@@ -5,10 +5,9 @@ namespace Navitronic\PsyshBundle\Tests;
 use Navitronic\PsyshBundle\PsyshBundle;
 
 /**
- * Class PsyshBundleTest
+ * Class PsyshBundleTest.
  *
  * @see     PsyshBundle
- * @package Navitronic\PsyshBundle\Tests
  */
 class PsyshBundleTest extends \PHPUnit_Framework_TestCase
 {

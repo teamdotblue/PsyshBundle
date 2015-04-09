@@ -6,10 +6,9 @@ use Navitronic\PsyshBundle\Command\PsyshCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
- * Class PsyshCommandTest
+ * Class PsyshCommandTest.
  *
  * @see     PsyshCommand
- * @package Navitronic\PsyshBundle\Tests\Command
  */
 class PsyshCommandTest extends \PHPUnit_Framework_TestCase
 {
