@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./vendor/autoload.php" colors="true">
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="Tests/bootstrap.php"
+        >
 
     <testsuites>
-        <testsuite name="KitpagesDataGridBundle test suite">
-            <directory suffix="Test.php">./Tests</directory>
+        <testsuite name="PsyshBundle Test Suite">
+            <directory>./Tests</directory>
         </testsuite>
     </testsuites>
-    <php>
-        <server name="KERNEL_DIR" value="./Tests/app/" />
-    </php>
 
-    <filter>
-        <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
 </phpunit>
