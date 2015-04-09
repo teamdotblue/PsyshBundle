@@ -1,6 +1,9 @@
 {
     "name": "navitronic/psysh",
+    "version": "0.2",
     "description": "A port of the PHP REPL PsySH for Symfony.",
+    "keywords": ["console", "psysh", "shell", "repl", "symfony"],
+    "license": "MIT",
     "minimum-stability": "dev",
     "require": {
         "psy/psysh": "0.4.*",
@@ -16,6 +19,11 @@
         {
             "name": "Adrian Palmer",
             "email": "navitronic@gmail.com"
+        },
+        {
+            "name": "Théo FIDRY",
+            "email": "theo.fidry@gmail.com",
+            "homepage": "https://github.com/theofidry"
         }
     ]
 }
