@@ -31,7 +31,8 @@ class PsyshCommand extends ContainerAwareCommand
     {
         $this
             ->setName('psysh')
-            ->setDescription('Start PsySH for Symfony');
+            ->setDescription('Start PsySH for Symfony')
+        ;
     }
 
     /**
@@ -45,7 +46,6 @@ class PsyshCommand extends ContainerAwareCommand
         $container = $this->getContainer();
 
         $shell = new Shell();
-
         $shell->debug(
             [
                 'container'  => $container,

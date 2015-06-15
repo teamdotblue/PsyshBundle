@@ -1,34 +1,13 @@
 # PsyshBundle
 
-A bundle to use the php REPL [Psysh](http://psysh.org/) with Symfony.
+A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 
-## Install
+## Documentation
 
-Install the package:
-```shell
-composer require-dev theofidry/psysh
-```
-
-Enable the bundle:
-```php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    public function registerBundles()
-    {
-        //...
-
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            //...
-            $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
-        }
-
-        return $bundles;
-    }
-}
-```
+1. [Install](Resources/doc/install.md)
+2. [Usage as interactive debugger](Resources/doc/basic-usage.md)
+3. [Reflect like a boss](Resources/doc/reflect.md)
+4. [Usage as a breakpoint](Resources/doc/breakpoint.md)
 
 ## Usage
 
@@ -36,6 +15,14 @@ public function registerBundles()
 php app/console psysh
 ```
 
-# License
+## Credits
+
+* [Justin Hileman](https://github.com/bobthecow): author of [PsySH][1]
+* [Adrian Palmer](https://github.com/navitronic): to give the lead for porting [PsySH][1] on [Symfony][2]
+
+## License
 
 [![license](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
+
+[1]: http://psysh.org/
+[2]: http://symfony.com/
