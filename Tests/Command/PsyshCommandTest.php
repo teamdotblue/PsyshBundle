@@ -1,14 +1,23 @@
 <?php
 
-namespace Navitronic\PsyshBundle\Tests\Command;
+/*
+ * This file is part of the PsyshBundle package.
+ *
+ * (c) Théo FIDRY <theo.fidry@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Navitronic\PsyshBundle\Command\PsyshCommand;
+namespace Fidry\PsyshBundle\Tests\Command;
+
+use Fidry\PsyshBundle\Command\PsyshCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * Class PsyshCommandTest.
  *
- * @see     PsyshCommand
+ * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class PsyshCommandTest extends \PHPUnit_Framework_TestCase
 {
