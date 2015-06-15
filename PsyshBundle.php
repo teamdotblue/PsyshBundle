@@ -11,6 +11,7 @@
 
 namespace Fidry\PsyshBundle;
 
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
