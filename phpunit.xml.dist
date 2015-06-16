@@ -2,6 +2,7 @@
 
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
@@ -15,19 +16,26 @@
         <server name="KERNEL_DIR" value="Tests/TestApp/" />
     </php>
 
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+    </logging>
+
     <testsuites>
         <testsuite name="PsyshBundle Test Suite">
-            <directory>./Tests</directory>
+            <directory suffix="Test.php">./Tests</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests/TestApp</directory>
+            </exclude>
         </testsuite>
     </testsuites>
 
-    <testsuites>
-        <whitelist>
-            <directory>./</directory>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./Tests</directory>
             <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
+                <directory suffix=".php">./Tests/TestApp</directory>
             </exclude>
         </whitelist>
-    </testsuites>
+    </filter>
 </phpunit>
