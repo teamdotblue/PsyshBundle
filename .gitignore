@@ -1,2 +1,4 @@
 vendor
 composer.lock
+Tests/TestApp/cache
+Tests/TestApp/logs

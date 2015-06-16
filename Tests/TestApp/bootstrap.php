@@ -11,8 +11,8 @@
 
 call_user_func(
     function () {
-        if (!is_file($autoloadFile = __DIR__.'/../vendor/autoload.php')) {
-            throw new \RuntimeException('Did not find vendor/autoload.php. Did you run "composer install --dev"?');
+        if (!is_file($autoloadFile = __DIR__.'/../../vendor/autoload.php')) {
+            throw new \RuntimeException('Did not find vendor/autoload.php. Did you run "composer install"?');
         }
         $loader = require $autoloadFile;
         $loader->add('Fidry\PsyshBundle\Tests', __DIR__);

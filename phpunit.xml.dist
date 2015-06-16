@@ -8,8 +8,12 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="Tests/bootstrap.php"
+         bootstrap="Tests/TestApp/bootstrap.php"
         >
+
+    <php>
+        <server name="KERNEL_DIR" value="Tests/TestApp/" />
+    </php>
 
     <testsuites>
         <testsuite name="PsyshBundle Test Suite">
@@ -17,4 +21,13 @@
         </testsuite>
     </testsuites>
 
+    <testsuites>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
+            </exclude>
+        </whitelist>
+    </testsuites>
 </phpunit>
