@@ -1,5 +1,5 @@
 framework:
-    secret:                  fidry.fr
+    secret:                  PsyshBundleSecret
     router:
         resource:            ~
         strict_requirements: %kernel.debug%
