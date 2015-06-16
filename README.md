@@ -1,5 +1,9 @@
 # PsyshBundle
 
+[![Build Status](https://travis-ci.org/theofidry/PsyshBundle.svg)](https://travis-ci.org/theofidry/PsyshBundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110/big.png)](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110)
+[![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
+
 A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 
 ## Documentation
