@@ -1,7 +1,7 @@
 {
     "name": "theofidry/psysh",
     "description": "A port of the PHP REPL PsySH for Symfony.",
-    "keywords": ["console", "psysh", "shell", "repl", "symfony"],
+    "keywords": ["console", "psysh", "shell", "REPL", "symfony", "interactive"],
     "license": "MIT",
     "authors": [
         {
