@@ -12,14 +12,14 @@ A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 ## Documentation
 
 1. [Install](Resources/doc/install.md)
-2. [Usage as interactive debugger](Resources/doc/basic-usage.md)
+2. [PsySH as a debugger](Resources/doc/debugger.md)
 3. [Reflect like a boss](Resources/doc/reflect.md)
-4. [Usage as a breakpoint](Resources/doc/breakpoint.md)
+4. [PsySH for breakpoints](Resources/doc/breakpoint.md)
 
 
 ## Usage
 
-```shell
+```bash
 php app/console psysh
 ```
 

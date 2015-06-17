@@ -4,7 +4,7 @@
 
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
 
-```
+```bash
 composer require-dev theofidry/psysh
 ```
 
@@ -28,4 +28,4 @@ public function registerBundles()
 }
 ```
 
-Next chapter: [Usage as interactive debugger](basic-usage.md)
+Next chapter: [PsySH as a debugger](debugger.md)

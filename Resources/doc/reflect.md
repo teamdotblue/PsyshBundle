@@ -1,14 +1,11 @@
-## Check documentation
+# Documentation & Reflection
 
-```
-$ php app/console psysh
->>> require('test.php')
-=> 1
->>> doc DummyNamespace\display
-function DummyNamespace\display()
-```
 
-As you can see, no documentation is actually displayed. This is because the function does not have any. Let's add some:
+## Read documentation
+
+You can easily read the documentation from any class or function.
+
+Let's take for instance the following function:
 
 ```php
 <?php
@@ -17,145 +14,44 @@ As you can see, no documentation is actually displayed. This is because the func
 
 namespace DummyNamespace;
 
-function generatorFactory()
-{
-    for ($i = 0; $i < 3; $i++) {
-        yield $i;
-    }
-}
-
 /**
  * This is some PHPDoc.
  *
  * Put anything here.
  *
- * @author Théo FIDRY <theo.fidry@gmail.com>
- * @covers ::apply
+ * @unknownMarkup
  *
  * @param int   $x
  * @param array $y
  *
  * @return \DateTime
+ *
+ * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 function display($x = 1, array $y = null)
 {
-    $generator = generatorFactory();
-    foreach ($generator as $value) {
-        echo __NAMESPACE__.": $value\n";
-    }
-
-    return new \DateTime();
 }
 ```
 
-Now:
+The `doc` command easily show the documentation for the `DummyNamespace\display()` function:
 
-```
->>> require('test.php')
-=> 1
->>> doc \DummyNamespace\display
-function DummyNamespace\display($x = 1, array $y = null)
+![Use case #5](images/use-case-5.png)
 
-Description:
-  This is some PHPDoc.
-  
-  Put anything here.
+You can also display the doc of PHP functions, example: `doc array_map`
 
-Param:
-  int    $x 
-  array  $y 
-
-Return:
-  \DateTime 
-
-Author: Théo FIDRY <theo.fidry@gmail.com>
-
-Covers: ::apply
-```
-
-As you can see it display the whole PHPDoc properly formated, even if the tag are unknown like the `@cover` tag which
-comes from PHPUnit.
-
-You can also display the doc of PHP functions: `doc array_map`
 
 ## Reflect like a boss
 
-`help ls`
+Reflect thanks to the `ls -la` function:
 
-```
-> ls
-Variables: $container, $kernel, $parameters
+![Use case #51](images/use-case-51.png)
 
->>> ls -al $kernel
 
-Class Constants:
-  END_OF_LIFE          "05/2019"  
-  END_OF_MAINTENANCE   "05/2018"  
-  EXTRA_VERSION        ""         
-  MAJOR_VERSION        "2"        
-  MASTER_REQUEST       1          
-  MINOR_VERSION        "7"        
-  RELEASE_VERSION      "1"        
-  SUB_REQUEST          2          
-  VERSION              "2.7.1"    
-  VERSION_ID           "20701"    
+## View source code
 
-Class Properties:
-  $booted           true                                                             
-  $bundleMap        Array(14)                                                        
-  $bundles          Array(14)                                                        
-  $container        <appDevDebugProjectContainer #0000000014f7ea100000000053f3c597>  
-  $debug            true                                                             
-  $environment      "dev"                                                            
-  $loadClassCache   null                                                             
-  $name             "app"                                                            
-  $rootDir          "/home/thfid/Sites/blog/app"                                     
-  $startTime        1434440630.1913                                                  
+Show the source code of a function with the `show` command:
 
-Class Methods:
-  __clone                          public function __clone()                                                                                                                                             
-  __construct                      public function __construct($environment, $debug)                                                                                                                     
-  boot                             public function boot()                                                                                                                                                
-  buildContainer                   protected function buildContainer()                                                                                                                                   
-  doLoadClassCache                 protected function doLoadClassCache($name, $extension)                                                                                                                
-  dumpContainer                    protected function dumpContainer(Symfony\Component\Config\ConfigCache $cache, Symfony\Component\DependencyInjection\ContainerBuilder $container, $class, $baseClass)  
-  getBundle                        public function getBundle($name, $first = true)                                                                                                                       
-  getBundles                       public function getBundles()                                                                                                                                          
-  getCacheDir                      public function getCacheDir()                                                                                                                                         
-  getCharset                       public function getCharset()                                                                                                                                          
-  getContainer                     public function getContainer()                                                                                                                                        
-  getContainerBaseClass            protected function getContainerBaseClass()                                                                                                                            
-  getContainerBuilder              protected function getContainerBuilder()                                                                                                                              
-  getContainerClass                protected function getContainerClass()                                                                                                                                
-  getContainerLoader               protected function getContainerLoader(Symfony\Component\DependencyInjection\ContainerInterface $container)                                                            
-  getEnvParameters                 protected function getEnvParameters()                                                                                                                                 
-  getEnvironment                   public function getEnvironment()                                                                                                                                      
-  getHttpKernel                    protected function getHttpKernel()                                                                                                                                    
-  getKernelParameters              protected function getKernelParameters()                                                                                                                              
-  getLogDir                        public function getLogDir()                                                                                                                                           
-  getName                          public function getName()                                                                                                                                             
-  getRootDir                       public function getRootDir()                                                                                                                                          
-  getStartTime                     public function getStartTime()                                                                                                                                        
-  handle                           public function handle(Symfony\Component\HttpFoundation\Request $request, $type = 1, $catch = true)                                                                   
-  init                             public function init()                                                                                                                                                
-  initializeBundles                protected function initializeBundles()  
-```
+![Use case #52](images/use-case-52.png)
 
-Show a function source code:
-
-```
->>> show DummyNamespace\display
-  > 27| function display($x = 1, array $y = null)
-    28| {
-    29|     $generator = generatorFactory();
-    30|     foreach ($generator as $value) {
-    31|         echo __NAMESPACE__.": $value\n";
-    32|     }
-    33| 
-    34|     return new \DateTime();
-    35| }
-
-```
-
-Previous chapter: [Usage as interactive debugger](basic-usage.md)<br />
-Next chapter: [Usage as a breakpoint](breakpoint.md)
+Previous chapter: [PsySH as a debugger](debugger.md)<br />
+Next chapter: [PsySH for breakpoints](breakpoint.md)
