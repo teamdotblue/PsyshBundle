@@ -5,7 +5,7 @@
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
 
 ```bash
-composer require-dev theofidry/psysh
+composer require-dev theofidry/psysh-bundle
 ```
 
 ### Enable the bundle
