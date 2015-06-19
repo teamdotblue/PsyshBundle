@@ -1,10 +1,10 @@
 # PsySHBundle
 
 [![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
-[![Build Status](https://img.shields.io/travis/theofidry/PsySHBundle.svg?style=flat-square)](https://travis-ci.org/theofidry/PsySHBundle?branch=master)
+[![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/0dd96e9b-18b9-47f8-8ae0-762afb740110.svg?style=flat-square)](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110)
 [![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsySHBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsySHBundle/?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsyshBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsyshBundle/?branch=master)
 
 A bundle to use the php REPL [PsySH][1] with [Symfony][2].
 
