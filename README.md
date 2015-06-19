@@ -48,6 +48,8 @@ public function registerBundles()
 php app/console psysh
 ```
 
+![PsySH Shell](Resources/doc/images/shell.png)
+
 
 ## Credits
 
