@@ -1,6 +1,6 @@
 # PsyshBundle
 
-[![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh)
+[![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
 [![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/0dd96e9b-18b9-47f8-8ae0-762afb740110.svg?style=flat-square)](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110)
 [![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
@@ -11,11 +11,36 @@ A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 
 ## Documentation
 
-1. [Install](Resources/doc/install.md)
-2. [PsySH as a debugger](Resources/doc/debugger.md)
-3. [Reflect like a boss](Resources/doc/reflect.md)
-4. [PsySH for breakpoints](Resources/doc/breakpoint.md)
+1. [PsySH as a debugger](Resources/doc/debugger.md)
+2. [Reflect like a boss](Resources/doc/reflect.md)
+3. [PsySH for breakpoints](Resources/doc/breakpoint.md)
 
+
+## Install
+
+You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
+
+```bash
+composer require-dev theofidry/psysh-bundle
+```
+
+Then, enable the bundle by updating your `app/config/AppKernel.php` file to enable the bundle:
+```php
+<?php
+// app/config/AppKernel.php
+
+public function registerBundles()
+{
+    //...
+
+    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        //...
+        $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
+    }
+
+    return $bundles;
+}
+```
 
 ## Usage
 
