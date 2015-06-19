@@ -6,14 +6,17 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsyshBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsyshBundle/?branch=master)
 
-A bundle to use the php REPL [PsySH][1] with [Symfony][2].
+A bundle to use the php REPL [PsySH][1] with [Symfony][2]. Learn more at [psysh.org][1] and check out the [Interactive Debugging in PHP talk from OSCON](https://presentate.com/bobthecow/talks/php-for-pirates) on Presentate.
 
 What does it do exactly?
 * Loads [PsySH][1] with the application dependencies
-* Gives access to the Symfony:
-  * Container:`$container`
-  * Kernel: `$kernel`
-  * Parameters: `$parameters`
+* Gives access to the following variables:
+
+| Variable              | Description                          |
+|-----------------------|--------------------------------------|
+| `$container`          | Instance of Symfony ServiceContainer |
+| `$kernel`             | Instance of Symfony Kernel           |
+| `$parameters`         | Instance of Symfony parameters       |
 
 Aside from that it's the plain old [PsySH][1]!
 
@@ -45,7 +48,7 @@ public function registerBundles()
 
     if (in_array($this->getEnvironment(), array('dev', 'test'))) {
         //...
-        $bundles[] = new Fidry\PsySHBundle\PsySHBundle();
+        $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
     }
 
     return $bundles;
