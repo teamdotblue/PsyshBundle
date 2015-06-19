@@ -1,21 +1,53 @@
 # PsyshBundle
 
-[![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh)
-[![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle)
+[![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
+[![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/0dd96e9b-18b9-47f8-8ae0-762afb740110.svg?style=flat-square)](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110)
 [![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsyshBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsyshBundle/?branch=master)
 
 A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 
+What does it do exactly?
+* Loads [Psysh][1] with the application dependencies
+* Gives access to the Symfony Container (`$container`), Kernel (`$kernel`) and parameters (`$parameters`)
+
+Aside from that it's the plain old [Psysh][1]!
+
 
 ## Documentation
 
-1. [Install](Resources/doc/install.md)
-2. [PsySH as a debugger](Resources/doc/debugger.md)
-3. [Reflect like a boss](Resources/doc/reflect.md)
-4. [PsySH for breakpoints](Resources/doc/breakpoint.md)
+1. [Install](#install)
+1. [PsySH as a debugger](Resources/doc/debugger.md)
+2. [Reflect like a boss](Resources/doc/reflect.md)
+3. [PsySH for breakpoints](Resources/doc/breakpoint.md)
 
+
+## Install
+
+You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
+
+```bash
+composer require-dev theofidry/psysh-bundle
+```
+
+Then, enable the bundle by updating your `app/config/AppKernel.php` file to enable the bundle:
+```php
+<?php
+// app/config/AppKernel.php
+
+public function registerBundles()
+{
+    //...
+
+    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        //...
+        $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
+    }
+
+    return $bundles;
+}
+```
 
 ## Usage
 
@@ -23,10 +55,14 @@ A bundle to use the php REPL [Psysh][1] with [Symfony][2].
 php app/console psysh
 ```
 
+![PsySH Shell](Resources/doc/images/shell.png)
+
 
 ## Credits
 
-* [Justin Hileman](https://github.com/bobthecow): author of [PsySH][1]
+This bundle is developed by [Théo FIDRY](https://github.com/theofidry). This project has been made possible thanks to:
+
+* [Justin Hileman](https://github.com/bobthecow): author of [PsySH][1] and [all the contributors of the PsySH project](https://github.com/bobthecow/psysh/graphs/contributors)
 * [Adrian Palmer](https://github.com/navitronic): gave the lead for porting [PsySH][1] on [Symfony][2]
 
 
