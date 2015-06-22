@@ -1,5 +1,6 @@
 {
     "name": "theofidry/psysh-bundle",
+    "type": "symfony-bundle",
     "description": "A port of the PHP REPL PsySH for Symfony.",
     "keywords": ["console", "psysh", "shell", "REPL", "symfony", "interactive"],
     "license": "MIT",
