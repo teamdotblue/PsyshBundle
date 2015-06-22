@@ -34,7 +34,7 @@ Aside from that it's the plain old [PsySH][1]!
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
 
 ```bash
-composer require-dev theofidry/psysh-bundle
+composer require --dev theofidry/psysh-bundle
 ```
 
 Then, enable the bundle by updating your `app/config/AppKernel.php` file to enable the bundle:
