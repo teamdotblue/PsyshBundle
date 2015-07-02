@@ -1,4 +1,4 @@
-# PsySHBundle
+# PsyshBundle
 
 [![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
 [![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle?branch=master)
