@@ -24,7 +24,7 @@ Variables: $container, $session
 
 The default configuration is the following:
 
-```
+```yaml
 services:
     psysh.shell:
         class: Psy\Shell
