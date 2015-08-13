@@ -28,7 +28,7 @@ class AppKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
-            new PsyshBundle()
+            new PsyshBundle(),
         ];
     }
 
