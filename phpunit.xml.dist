@@ -17,24 +17,24 @@
     </php>
 
     <logging>
-        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+        <log type="coverage-html" target="dist/reports/phpunit/" lowUpperBound="35" highLowerBound="70" />
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" />
+        <log type="coverage-clover" target="dist/reports/phpunit/clover.xml" />
     </logging>
 
     <testsuites>
         <testsuite name="PsyshBundle Test Suite">
-            <directory suffix="Test.php">./Tests</directory>
-            <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests/TestApp</directory>
-            </exclude>
+            <directory>Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./Tests</directory>
+        <whitelist>
+            <directory>.</directory>
             <exclude>
-                <directory suffix=".php">./Tests/TestApp</directory>
+                <directory>Resources</directory>
+                <directory>Tests</directory>
+                <directory>vendor</directory>
             </exclude>
         </whitelist>
     </filter>

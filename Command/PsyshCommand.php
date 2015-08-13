@@ -17,8 +17,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class PsyshCommand
- *
  * @author Adrian PALMER <navitronic@gmail.com>
  * @author Théo FIDRY    <theo.fidry@gmail.com>
  */
