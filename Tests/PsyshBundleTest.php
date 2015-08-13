@@ -14,8 +14,6 @@ namespace Fidry\PsyshBundle\Tests;
 use Fidry\PsyshBundle\PsyshBundle;
 
 /**
- * Class PsyshBundleTest.
- *
  * @coversDefaultClass Fidry\PsyshBundle\PsyshBundle
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>

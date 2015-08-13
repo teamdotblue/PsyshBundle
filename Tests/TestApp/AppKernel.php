@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
+namespace Fidry\PsyshBundle\Tests\TestApp;
+
 use Fidry\PsyshBundle\PsyshBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class AppKernel
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
 class AppKernel extends Kernel

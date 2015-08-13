@@ -14,8 +14,6 @@ namespace Fidry\PsyshBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class PsyshBundle
- *
  * @author Adrian PALMER <navitronic@gmail.com>
  * @author Théo FIDRY    <theo.fidry@gmail.com>
  */
