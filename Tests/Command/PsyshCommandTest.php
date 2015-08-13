@@ -12,12 +12,9 @@
 namespace Fidry\PsyshBundle\Tests\Command;
 
 use Fidry\PsyshBundle\Command\PsyshCommand;
-use Fidry\PsyshBundle\PsyshBundle;
-use Fidry\PsyshBundle\Tests\TestApp\AppKernel;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * @coversDefaultClass Fidry\PsyshBundle\Command\PsyshCommand

@@ -44,8 +44,7 @@ class PsyshCommand extends Command
     {
         $this
             ->setName('psysh')
-            ->setDescription('Start PsySH for Symfony')
-        ;
+            ->setDescription('Start PsySH for Symfony');
     }
 
     /**
