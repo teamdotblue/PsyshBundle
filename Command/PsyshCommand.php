@@ -12,7 +12,7 @@
 namespace Fidry\PsyshBundle\Command;
 
 use Psy\Shell;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -22,8 +22,23 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Adrian PALMER <navitronic@gmail.com>
  * @author Théo FIDRY    <theo.fidry@gmail.com>
  */
-class PsyshCommand extends ContainerAwareCommand
+class PsyshCommand extends Command
 {
+    /**
+     * @var Shell
+     */
+    private $psyshShell;
+
+    /**
+     * @param Shell $psyshShell
+     */
+    public function __construct(Shell $psyshShell)
+    {
+        parent::__construct();
+
+        $this->psyshShell = $psyshShell;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -40,18 +55,6 @@ class PsyshCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $application = $this->getApplication();
-        $application->setCatchExceptions(false);
-        $application->setAutoExit(false);
-        $container = $this->getContainer();
-
-        $shell = new Shell();
-        $shell->debug(
-            [
-                'container'  => $container,
-                'kernel'     => $container->get('kernel'),
-                'parameters' => $container->getParameterBag()->all(),
-            ]
-        );
+        $this->psyshShell->debug($this->psyshShell->getScopeVariables());
     }
 }

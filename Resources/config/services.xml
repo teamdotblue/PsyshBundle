@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="psysh.shell" class="Psy\Shell">
+            <call method="setScopeVariables">
+                <argument type="collection">
+                    <argument key="container" type="service" id="service_container" />
+                    <argument key="kernel" type="service" id="kernel" />
+                    <argument key="parameters" type="expression">service('service_container').getParameterBag().all
+                        ()</argument>
+                </argument>
+            </call>
+        </service>
+
+        <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand" lazy="true">
+            <argument type="service" id="psysh.shell" />
+            <tag name="console.command" />
+        </service>
+    </services>
+
+</container>
