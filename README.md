@@ -27,6 +27,7 @@ Aside from that it's the plain old [PsySH][1]!
 1. [PsySH as a debugger](Resources/doc/debugger.md)
 2. [Reflect like a boss](Resources/doc/reflect.md)
 3. [PsySH for breakpoints](Resources/doc/breakpoint.md)
+4. [Customize PsySH](Resources/doc/custom.md)
 
 
 ## Install

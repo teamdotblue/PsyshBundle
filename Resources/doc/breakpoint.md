@@ -18,3 +18,4 @@ eval(\Psy\sh());
 ```
 
 Previous chapter: [Reflect like a boss](reflect.md)
+Next chapter: [Customize PsySH](custom.md)
