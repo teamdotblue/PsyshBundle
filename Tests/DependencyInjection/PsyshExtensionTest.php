@@ -20,23 +20,14 @@ use Fidry\PsyshBundle\DependencyInjection\PsyshExtension;
  */
 class PsyshExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var PsyshExtension
-     */
-    private $extension;
-
-    public function setUp()
-    {
-        $this->extension = new PsyshExtension();
-    }
-
     public function testConstruct()
     {
-        $this->extension = new PsyshExtension();
-        $this->assertInstanceOf('Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface',
-            $this->extension);
-        $this->assertInstanceOf('Symfony\Component\DependencyInjection\Extension\ExtensionInterface', $this->extension);
-        $this->assertInstanceOf('Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface',
-            $this->extension);
+        $extension = new PsyshExtension();
+
+        $this->assertInstanceOf('Symfony\Component\DependencyInjection\Extension\ExtensionInterface', $extension);
+        $this->assertInstanceOf(
+            'Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface',
+            $extension
+        );
     }
 }

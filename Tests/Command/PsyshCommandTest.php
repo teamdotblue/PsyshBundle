@@ -13,6 +13,7 @@ namespace Fidry\PsyshBundle\Tests\Command;
 
 use Fidry\PsyshBundle\Command\PsyshCommand;
 use Fidry\PsyshBundle\PsyshBundle;
+use Fidry\PsyshBundle\Tests\TestApp\AppKernel;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -67,5 +68,10 @@ class PsyshCommandTest extends KernelTestCase
         $application->find('psysh');
 
         $this->assertTrue(true);
+    }
+
+    protected static function getKernelClass()
+    {
+        return 'Fidry\PsyshBundle\Tests\TestApp\AppKernel';
     }
 }
