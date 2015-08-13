@@ -17,5 +17,5 @@ To use a breakpoint with PsySH, use the following:
 eval(\Psy\sh());
 ```
 
-Previous chapter: [Reflect like a boss](reflect.md)
+Previous chapter: [Reflect like a boss](reflect.md)<br/>
 Next chapter: [Customize PsySH](custom.md)
