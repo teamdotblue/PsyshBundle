@@ -66,9 +66,4 @@ class PsyshCommandTest extends KernelTestCase
 
         $this->assertTrue(true);
     }
-
-    protected static function getKernelClass()
-    {
-        return 'Fidry\PsyshBundle\Tests\TestApp\AppKernel';
-    }
 }

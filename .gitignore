@@ -1,5 +1,4 @@
 vendor
 composer.lock
-Tests/TestApp/cache
-Tests/TestApp/logs
-dist
+tests/Functionnal/cache
+tests/Functionnal/logs

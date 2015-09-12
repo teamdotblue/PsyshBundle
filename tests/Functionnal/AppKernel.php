@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Tests\TestApp;
-
 use Fidry\PsyshBundle\PsyshBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
