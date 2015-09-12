@@ -25,10 +25,10 @@ Aside from that it's the plain old [PsySH][1]!
 ## Documentation
 
 1. [Install](#install)
-1. [PsySH as a debugger](Resources/doc/debugger.md)
-2. [Reflect like a boss](Resources/doc/reflect.md)
-3. [PsySH for breakpoints](Resources/doc/breakpoint.md)
-4. [Customize PsySH](Resources/doc/custom.md)
+1. [PsySH as a debugger](src/Resources/doc/debugger.md)
+2. [Reflect like a boss](src/Resources/doc/reflect.md)
+3. [PsySH for breakpoints](src/Resources/doc/breakpoint.md)
+4. [Customize PsySH](src/Resources/doc/custom.md)
 
 
 ## Install
@@ -48,7 +48,7 @@ public function registerBundles()
 {
     //...
 
-    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+    if (in_array($this->getEnvironment(), ['dev', 'test'])) {
         //...
         $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
     }
@@ -63,7 +63,7 @@ public function registerBundles()
 php app/console psysh
 ```
 
-![PsySH Shell](Resources/doc/images/shell.png)
+![PsySH Shell](src/Resources/doc/images/shell.png)
 
 
 ## Credits
