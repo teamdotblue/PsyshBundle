@@ -1,4 +1,4 @@
 vendor
 composer.lock
-tests/Functionnal/cache
-tests/Functionnal/logs
+tests/Functional/cache
+tests/Functional/logs
