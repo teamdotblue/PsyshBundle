@@ -15,6 +15,7 @@ use Fidry\PsyshBundle\DependencyInjection\PsyshExtension;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
  * @coversDefaultClass Fidry\PsyshBundle\DependencyInjection\PsyshExtension
@@ -82,6 +83,9 @@ class PsyshExtensionTest extends \PHPUnit_Framework_TestCase
             )
             ->shouldBeCalled()
         ;
+
+        $containerBuilderProphecy->getDefinition('psysh.shell')->willReturn(new Definition());
+        $containerBuilderProphecy->getParameterBag()->willReturn(new ParameterBag());
 
         return $containerBuilderProphecy;
     }
