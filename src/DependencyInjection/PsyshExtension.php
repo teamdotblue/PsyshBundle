@@ -32,5 +32,12 @@ class PsyshExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $shellDefinition = $container->getDefinition('psysh.shell');
+        $shellMethodCalls = $shellDefinition->getMethodCalls();
+        if (count($shellMethodCalls) > 0) {
+            $shellMethodCalls[0][1][0]['parameters'] = $container->getParameterBag()->all();
+            $shellDefinition->setMethodCalls($shellMethodCalls);
+        }
     }
 }
