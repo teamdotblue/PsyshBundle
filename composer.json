@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "psy/psysh": "^0.3||^0.4||^0.5",
+        "psy/psysh": "~0.3",
         "symfony/framework-bundle": "~2.3"
     },
     "require-dev": {
