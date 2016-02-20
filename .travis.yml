@@ -19,10 +19,9 @@ matrix:
 
 before_install:
     - if ([ "hhvm" != "$TRAVIS_PHP_VERSION" ] && [ "nightly" != "$TRAVIS_PHP_VERSION" ]); then wget https://scrutinizer-ci.com/ocular.phar; fi
-    - composer self-update
 
 install:
-    - composer install
+    - composer install --prefer-dist
 
 script:
     - vendor/bin/phpunit -c phpunit.xml.dist --coverage-text

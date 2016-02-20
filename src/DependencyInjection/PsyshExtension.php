@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class PsyshExtension extends Extension
+final class PsyshExtension extends Extension
 {
     /**
      * {@inheritdoc}

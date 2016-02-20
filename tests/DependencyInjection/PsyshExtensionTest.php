@@ -14,6 +14,7 @@ namespace Fidry\PsyshBundle\Tests\DependencyInjection;
 use Fidry\PsyshBundle\DependencyInjection\PsyshExtension;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
@@ -43,12 +44,12 @@ class PsyshExtensionTest extends \PHPUnit_Framework_TestCase
     public function testIsExtensionEnabled()
     {
         $containerBuilderProphecy = $this->getBaseContainerBuiderProphecy();
-
+        /* @var ContainerBuilder $containerBuilder */
         $containerBuilder = $containerBuilderProphecy->reveal();
 
         $extension = new PsyshExtension();
 
-        $extension->load([], $containerBuilderProphecy->reveal());
+        $extension->load([], $containerBuilder);
 
         $this->assertTrue(true, 'Expected no error to be thrown.');
     }
@@ -71,6 +72,13 @@ class PsyshExtensionTest extends \PHPUnit_Framework_TestCase
 
         $containerBuilderProphecy
             ->setDefinition(
+                'psysh.config',
+                $this->definition('Psy\Configuration')
+            )
+            ->shouldBeCalled()
+        ;
+        $containerBuilderProphecy
+            ->setDefinition(
                 'psysh.shell',
                 $this->definition('Psy\Shell')
             )
@@ -84,6 +92,7 @@ class PsyshExtensionTest extends \PHPUnit_Framework_TestCase
             ->shouldBeCalled()
         ;
 
+        $containerBuilderProphecy->getDefinition('psysh.config')->willReturn(new Definition());
         $containerBuilderProphecy->getDefinition('psysh.shell')->willReturn(new Definition());
         $containerBuilderProphecy->getParameterBag()->willReturn(new ParameterBag());
 
