@@ -14,7 +14,28 @@ php -S localhost:9000 vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/
 To use a breakpoint with PsySH, use the following:
 
 ```php
-eval(\Psy\sh());
+psysh();
+```
+
+You can also pass additional parameters:
+
+```php
+psysh(['myVar' => $myVar);
+```
+
+Which will give you access to `$myVar` in the shell. But to avoid to have to pass all variables, you might simply want
+to bind the shell to you current context:
+
+```php
+class Dummy
+{
+    function myFunction() {
+        $x = 'hello World!';
+        psysh([], $this);
+        
+        // you will have access to $x in your instance
+    }
+}
 ```
 
 Previous chapter: [Reflect like a boss](reflect.md)<br/>

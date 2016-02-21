@@ -19,7 +19,7 @@ What does it do exactly?
 | `$kernel`             | Instance of Symfony Kernel           |
 | `$parameters`         | Instance of Symfony parameters       |
 
-Aside from that it's the plain old [PsySH][1]!
+Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/Resources/doc/custom.md) to add your own variables.
 
 
 ## Documentation
@@ -61,6 +61,12 @@ public function registerBundles()
 
 ```bash
 php app/console psysh
+```
+
+or
+
+```php
+psysh()
 ```
 
 ![PsySH Shell](src/Resources/doc/images/shell.png)

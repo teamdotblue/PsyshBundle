@@ -17,14 +17,19 @@
     ],
     "require": {
         "psy/psysh": "~0.3",
-        "symfony/framework-bundle": "~2.3"
+        "symfony/framework-bundle": "~2.3|3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5",
-        "symfony/symfony": "~2.7"
+        "symfony/symfony": "~2.7|3.0"
     },
     "autoload": {
-        "psr-4": { "Fidry\\PsyshBundle\\": "src" }
+        "psr-4": {
+            "Fidry\\PsyshBundle\\": "src"
+        },
+        "files": [
+            "src/Support/psysh.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": { "Fidry\\PsyshBundle\\Tests\\": "tests" }

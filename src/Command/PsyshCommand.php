@@ -20,21 +20,21 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Adrian PALMER <navitronic@gmail.com>
  * @author Théo FIDRY    <theo.fidry@gmail.com>
  */
-class PsyshCommand extends Command
+final class PsyshCommand extends Command
 {
     /**
      * @var Shell
      */
-    private $psyshShell;
+    private $shell;
 
     /**
-     * @param Shell $psyshShell
+     * @param Shell $shell
      */
-    public function __construct(Shell $psyshShell)
+    public function __construct(Shell $shell)
     {
         parent::__construct();
 
-        $this->psyshShell = $psyshShell;
+        $this->shell = $shell;
     }
 
     /**
@@ -52,6 +52,6 @@ class PsyshCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->psyshShell->debug($this->psyshShell->getScopeVariables());
+        $this->shell->debug($this->shell->getScopeVariables());
     }
 }

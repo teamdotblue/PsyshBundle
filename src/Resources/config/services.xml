@@ -5,7 +5,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="psysh.config" class="Psy\Configuration" />
+
         <service id="psysh.shell" class="Psy\Shell">
+            <argument type="service" id="psysh.config" />
             <call method="setScopeVariables">
                 <argument type="collection">
                     <argument key="container" type="service" id="service_container" />
@@ -15,7 +18,7 @@
             </call>
         </service>
 
-        <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand" lazy="true">
+        <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand">
             <argument type="service" id="psysh.shell" />
             <tag name="console.command" />
         </service>

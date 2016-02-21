@@ -11,12 +11,23 @@
 
 namespace Fidry\PsyshBundle;
 
+use Fidry\PsyshBundle\DependencyInjection\Psysh;
+use Psy\Shell;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author Adrian PALMER <navitronic@gmail.com>
  * @author Théo FIDRY    <theo.fidry@gmail.com>
  */
-class PsyshBundle extends Bundle
+final class PsyshBundle extends Bundle
 {
+    public function boot()
+    {
+        parent::boot();
+
+        /* @var Shell $shell */
+        $shell = $this->container->get('psysh.shell');
+        Psysh::init($shell);
+    }
+
 }

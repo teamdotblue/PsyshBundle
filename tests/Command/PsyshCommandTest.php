@@ -12,9 +12,13 @@
 namespace Fidry\PsyshBundle\Tests\Command;
 
 use Fidry\PsyshBundle\Command\PsyshCommand;
+use Fidry\PsyshBundle\DependencyInjection\Psysh;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @coversDefaultClass Fidry\PsyshBundle\Command\PsyshCommand
@@ -58,7 +62,7 @@ class PsyshCommandTest extends KernelTestCase
         );
     }
 
-    public function testExecute()
+    public function testFindShell()
     {
         $application = new Application(self::$kernel);
         $application->add($this->command);
