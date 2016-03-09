@@ -17,11 +17,11 @@
     ],
     "require": {
         "psy/psysh": "~0.3",
-        "symfony/framework-bundle": "~2.3|3.0"
+        "symfony/framework-bundle": "~2.3|~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5",
-        "symfony/symfony": "~2.7|3.0"
+        "symfony/symfony": "~2.7|~3.0"
     },
     "autoload": {
         "psr-4": {
