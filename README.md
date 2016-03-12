@@ -61,6 +61,9 @@ public function registerBundles()
 
 ```bash
 php app/console psysh
+
+>> $client = $container->get('dummy.client')
+>> $client->fetch()
 ```
 
 or

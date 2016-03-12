@@ -14,6 +14,7 @@
                     <argument key="container" type="service" id="service_container" />
                     <argument key="kernel" type="service" id="kernel" />
                     <argument key="parameters" />
+                    <argument key="self" type="service" id="psysh.shell" />
                 </argument>
             </call>
         </service>
