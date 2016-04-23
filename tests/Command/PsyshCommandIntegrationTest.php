@@ -15,7 +15,6 @@ use Fidry\PsyshBundle\Command\PsyshCommand;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Command\Command;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
@@ -41,11 +40,6 @@ class PsyshCommandIntegrationTest extends KernelTestCase
 
         $this->shell = self::$kernel->getContainer()->get('psysh.shell');
         $this->command = self::$kernel->getContainer()->get('psysh.command.shell_command');
-    }
-
-    public function testIsASymfonyCommand()
-    {
-        $this->assertTrue(is_subclass_of(PsyshCommand::class, Command::class));
     }
 
     public function testScopeVariables()
