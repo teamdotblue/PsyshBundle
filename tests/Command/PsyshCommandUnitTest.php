@@ -52,7 +52,7 @@ class PsyshCommandUnitTest extends \PHPUnit_Framework_TestCase
         /* @var InputInterface $input */
         $input = $this->prophesize('Symfony\Component\Console\Input\InputInterface')->reveal();
         /* @var OutputInterface $output */
-        $output = $this->prophesize('Symfony\Component\Console\Input\OutputInterface')->reveal();
+        $output = $this->prophesize('Symfony\Component\Console\Output\OutputInterface')->reveal();
 
         $command = new PsyshCommand($shell);
         $command->run($input, $output);
