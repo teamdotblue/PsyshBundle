@@ -5,7 +5,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="psysh.config" class="Psy\Configuration" />
+        <service id="psysh.config" class="Psy\Configuration">
+            <call method="setHistoryFile">
+                <argument>%kernel.cache_dir%/psysh_history</argument>
+            </call>
+        </service>
 
         <service id="psysh.shell" class="Psy\Shell">
             <argument type="service" id="psysh.config" />

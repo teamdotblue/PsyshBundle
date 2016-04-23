@@ -12,20 +12,14 @@
 namespace Fidry\PsyshBundle\Tests\Command;
 
 use Fidry\PsyshBundle\Command\PsyshCommand;
-use Fidry\PsyshBundle\DependencyInjection\Psysh;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @coversDefaultClass Fidry\PsyshBundle\Command\PsyshCommand
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class PsyshCommandTest extends KernelTestCase
+class PsyshCommandIntegrationTest extends KernelTestCase
 {
     /**
      * @var Shell
@@ -56,9 +50,13 @@ class PsyshCommandTest extends KernelTestCase
                 'kernel',
                 'parameters',
                 '_',
+                'self',
             ],
             array_keys($this->shell->getScopeVariables()),
-            'Expected shell service to have scope variables'
+            'Expected shell service to have scope variables',
+            0.0,
+            10,
+            true
         );
     }
 

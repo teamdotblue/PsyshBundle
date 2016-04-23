@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1461434799">
+  <project timestamp="1461434799">
+    <package name="Fidry\PsyshBundle\Command">
+      <file name="/Users/Theo/Sites/GitHub/PsyshBundle/src/Command/PsyshCommand.php">
+        <class name="PsyshCommand" namespace="Fidry\PsyshBundle\Command">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
+        </class>
+        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="37" type="stmt" count="4"/>
+        <line num="38" type="stmt" count="4"/>
+        <line num="43" type="method" name="configure" visibility="protected" complexity="1" crap="1" count="4"/>
+        <line num="46" type="stmt" count="4"/>
+        <line num="47" type="stmt" count="4"/>
+        <line num="48" type="stmt" count="4"/>
+        <line num="53" type="method" name="execute" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <metrics loc="57" ncloc="33" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
+      </file>
+    </package>
+    <package name="Fidry\PsyshBundle\DependencyInjection">
+      <file name="/Users/Theo/Sites/GitHub/PsyshBundle/src/DependencyInjection/Psysh.php">
+        <class name="Psysh" namespace="Fidry\PsyshBundle\DependencyInjection">
+          <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="2" elements="10" coveredelements="3"/>
+        </class>
+        <line num="26" type="method" name="init" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="31" type="method" name="debug" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="method" name="getInstance" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="30" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="2" elements="10" coveredelements="3"/>
+      </file>
+      <file name="/Users/Theo/Sites/GitHub/PsyshBundle/src/DependencyInjection/PsyshExtension.php">
+        <class name="PsyshExtension" namespace="Fidry\PsyshBundle\DependencyInjection">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="6" elements="9" coveredelements="6"/>
+        </class>
+        <line num="31" type="method" name="load" visibility="public" complexity="2" crap="2.06" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="1"/>
+        <metrics loc="43" ncloc="25" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="6" elements="9" coveredelements="6"/>
+      </file>
+    </package>
+    <package name="Fidry\PsyshBundle">
+      <file name="/Users/Theo/Sites/GitHub/PsyshBundle/src/PsyshBundle.php">
+        <class name="PsyshBundle" namespace="Fidry\PsyshBundle">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="24" type="method" name="boot" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <metrics loc="33" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <file name="/Users/Theo/Sites/GitHub/PsyshBundle/src/Support/psysh.php">
+      <line num="3" type="stmt" count="0"/>
+      <line num="5" type="stmt" count="0"/>
+      <line num="6" type="stmt" count="0"/>
+      <line num="7" type="stmt" count="0"/>
+      <line num="8" type="stmt" count="0"/>
+      <metrics loc="8" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="5" coveredelements="0"/>
+    </file>
+    <metrics files="5" loc="185" ncloc="116" classes="4" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="20" elements="40" coveredelements="25"/>
+  </project>
+</coverage>
