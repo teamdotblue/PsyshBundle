@@ -32,7 +32,10 @@
         ]
     },
     "autoload-dev": {
-        "psr-4": { "Fidry\\PsyshBundle\\": "tests" }
+        "psr-4": { "Fidry\\PsyshBundle\\": "tests" },
+        "files": [
+            "tests/Functional/AppKernel.php"
+        ]
     },
     "config": {
         "bin-dir": "bin",

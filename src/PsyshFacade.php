@@ -45,6 +45,8 @@ final class PsyshFacade implements ContainerAwareInterface
 
     public static function debug(array $variables = [], $bind = null)
     {
+        self::init();
+
         $_variables = array_merge(self::$shell->getScopeVariables(), $variables);
 
         extract(
