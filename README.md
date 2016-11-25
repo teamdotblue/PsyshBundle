@@ -26,10 +26,10 @@ Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/R
 ## Documentation
 
 1. [Install](#install)
-1. [PsySH as a debugger](src/Resources/doc/debugger.md)
-2. [Reflect like a boss](src/Resources/doc/reflect.md)
-3. [PsySH for breakpoints](src/Resources/doc/breakpoint.md)
-4. [Customize PsySH](src/Resources/doc/custom.md)
+1. [PsySH as a debugger](doc/debugger.md)
+2. [Reflect like a boss](doc/reflect.md)
+3. [PsySH for breakpoints](doc/breakpoint.md)
+4. [Customize PsySH](doc/custom.md)
 
 
 ## Install
@@ -67,10 +67,12 @@ php app/console psysh
 or
 
 ```php
+// Somewhere in your Symfony app
+
 psysh()
 ```
 
-![PsySH Shell](src/Resources/doc/images/shell.png)
+![PsySH Shell](doc/images/shell.png)
 
 
 ## Credits

@@ -53,5 +53,5 @@ Show the source code of a function with the `show` command:
 
 ![Use case #52](images/use-case-52.png)
 
-Previous chapter: [PsySH as a debugger](debugger.md)<br />
-Next chapter: [PsySH for breakpoints](breakpoint.md)
+
+« [PsySH as a debugger](debugger.md) • [PsySH for breakpoints](breakpoint.md) »

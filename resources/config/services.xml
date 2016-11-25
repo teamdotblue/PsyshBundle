@@ -17,7 +17,9 @@
                 <argument type="collection">
                     <argument key="container" type="service" id="service_container" />
                     <argument key="kernel" type="service" id="kernel" />
-                    <argument key="parameters" />
+                    <argument key="parameters" type="string">
+                        @=service('service_container').getParameterBag().all()
+                    </argument>
                     <argument key="self" type="service" id="psysh.shell" />
                 </argument>
             </call>
@@ -26,6 +28,12 @@
         <service id="psysh.command.shell_command" class="Fidry\PsyshBundle\Command\PsyshCommand">
             <argument type="service" id="psysh.shell" />
             <tag name="console.command" />
+        </service>
+
+        <service id="psysh.facade" class="Fidry\PsyshBundle\PsyshFacade">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
         </service>
     </services>
 

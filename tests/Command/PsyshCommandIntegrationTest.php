@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Tests\Command;
+namespace Fidry\PsyshBundle\Command;
 
-use Fidry\PsyshBundle\Command\PsyshCommand;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
+ *
+ * @coversNothing
  */
 class PsyshCommandIntegrationTest extends KernelTestCase
 {

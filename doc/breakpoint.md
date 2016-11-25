@@ -38,5 +38,5 @@ class Dummy
 }
 ```
 
-Previous chapter: [Reflect like a boss](reflect.md)<br/>
-Next chapter: [Customize PsySH](custom.md)
+
+« [Reflect like a boss](reflect.md) • [Customize PsySH](custom.md) »

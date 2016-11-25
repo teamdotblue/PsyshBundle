@@ -11,7 +11,7 @@
 
 namespace Fidry\PsyshBundle;
 
-use Fidry\PsyshBundle\DependencyInjection\Psysh;
+use Fidry\PsyshBundle\PsyshFacade;
 use Psy\Shell;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -25,9 +25,7 @@ final class PsyshBundle extends Bundle
     {
         parent::boot();
 
-        /* @var Shell $shell */
-        $shell = $this->container->get('psysh.shell');
-        Psysh::init($shell);
+        $this->container->get('psysh.facade');
     }
 
 }

@@ -11,7 +11,6 @@
 
 namespace Fidry\PsyshBundle;
 
-use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -19,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class PsyshBundleTest extends KernelTestCase
+class PsyshFacadeTest extends KernelTestCase
 {
     /**
      * Test that the bundle loads and compiles.
@@ -28,9 +27,13 @@ class PsyshBundleTest extends KernelTestCase
     {
         static::bootKernel();
 
-        $this->assertInstanceOf(
-            Shell::class,
-            static::$kernel->getContainer()->get('psysh.shell')
-        );
+        PsyshFacade::init();
+
+        $shellRefl= (new \ReflectionClass(PsyshFacade::class))->getProperty('shell');
+        $shellRefl->setAccessible(true);
+
+        $shell = $shellRefl->getValue();
+
+        $this->assertNotNull($shell);
     }
 }

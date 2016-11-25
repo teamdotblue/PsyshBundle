@@ -9,17 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Tests\Command;
+namespace Fidry\PsyshBundle\Command;
 
-use Fidry\PsyshBundle\Command\PsyshCommand;
-use Prophecy\Argument;
 use Psy\Shell;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @coversDefaultClass Fidry\PsyshBundle\Command\PsyshCommand
+ * @covers \Fidry\PsyshBundle\Command\PsyshCommand
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
@@ -27,7 +25,7 @@ class PsyshCommandUnitTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsASymfonyCommand()
     {
-        $this->assertTrue(is_subclass_of('Fidry\PsyshBundle\Command\PsyshCommand', 'Symfony\Component\Console\Command\Command'));
+        $this->assertTrue(is_a(PsyshCommand::class, Command::class, true));
     }
 
     public function testConfiguration()
@@ -44,15 +42,15 @@ class PsyshCommandUnitTest extends \PHPUnit_Framework_TestCase
 
     public function testExecute()
     {
-        $shellProphecy = $this->prophesize('Psy\Shell');
+        $shellProphecy = $this->prophesize(Shell::class);
         $shellProphecy->run()->shouldBeCalled();
         /* @var Shell $shell */
         $shell = $shellProphecy->reveal();
 
         /* @var InputInterface $input */
-        $input = $this->prophesize('Symfony\Component\Console\Input\InputInterface')->reveal();
+        $input = $this->prophesize(InputInterface::class)->reveal();
         /* @var OutputInterface $output */
-        $output = $this->prophesize('Symfony\Component\Console\Output\OutputInterface')->reveal();
+        $output = $this->prophesize(OutputInterface::class)->reveal();
 
         $command = new PsyshCommand($shell);
         $command->run($input, $output);

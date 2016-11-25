@@ -119,5 +119,5 @@ Hopefully, PsySH is already loaded with Symfony's context. As shown bellow, you 
 
 ![Use case #4](images/use-case-4.png)
 
-Previous chapter: [Install](../../../README.md#documentation)<br />
-Next chapter: [Reflect like a boss](reflect.md)
+
+« [Install](../README.md#documentation) • [Reflect like a boss](reflect.md) »
