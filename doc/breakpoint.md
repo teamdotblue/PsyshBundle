@@ -1,5 +1,8 @@
 # PsySH for breakpoints
 
+**Note:** while this work to a certain extend, it is recommended to use [xdebug][1] instead for
+breakpoints and step by step debugging.
+
 As explained in PsySH documentation, it is possible to use PsySH as a debugger by evaluating it where you wish to have
 a breakpoint. Once this breakpoint reached, a PsySH instance will be launched and then you can debug as you like at this
 point.
@@ -32,11 +35,14 @@ class Dummy
     function myFunction() {
         $x = 'hello World!';
         psysh([], $this);
-        
+
         // you will have access to $x in your instance
     }
 }
 ```
 
 
-« [Reflect like a boss](reflect.md) • [Customize PsySH](custom.md) »
+« [Reflect like a boss](reflect.md) • [Back to Table of Contents](../README.md#documentation) »
+
+
+[1]: https://xdebug.org

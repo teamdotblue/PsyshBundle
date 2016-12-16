@@ -25,10 +25,11 @@ Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/R
 ## Documentation
 
 1. [Install](#install)
+1. [Usage](#usage)
 1. [PsySH as a debugger](doc/debugger.md)
-2. [Reflect like a boss](doc/reflect.md)
-3. [PsySH for breakpoints](doc/breakpoint.md)
-4. [Customize PsySH](doc/custom.md)
+1. [Reflect like a boss](doc/reflect.md)
+1. [PsySH for breakpoints](doc/breakpoint.md)
+1. [Customize PsySH](#customize-psysh)
 
 
 ## Install
@@ -72,6 +73,58 @@ psysh()
 ```
 
 ![PsySH Shell](doc/images/shell.png)
+
+[Go further](#documentation).
+
+
+## Customize PsySH
+
+# Customize PsySH
+
+You may also want to add a custom command or change the parameters. To achieve that, simply override the
+`psysh.shell` service declaration:
+
+```yaml
+# app/config/config_dev.yml
+
+services:
+    psysh.shell:
+        class: Psy\Shell
+        calls:
+            - method: setScopeVariables
+              arguments:
+                -
+                    container: '@service_container'
+                    session: '@session'
+```
+
+Now if you run `php app/console psysh` and then `ls`, you will see the variables `$container` and `$session`:
+
+```
+>>> ls
+Variables: $container, $session
+```
+
+The default configuration is the following:
+
+```yaml
+# app/config/config_dev.yml
+
+services:
+    psysh.shell:
+        class: Psy\Shell
+        calls:
+            - method: setScopeVariables
+              arguments:
+                -
+                    kernel: '@kernel'
+                    container: '@service_container'
+                    parameters: '@=service("service_container").getParameterBag().all()'
+```
+
+**Note: PsyshBundle is by default registered to the Kernel only in dev/test environment and so are the bundle package.
+If you override the service declaration, ensure that it will not occur in production. You can declare your service
+in `app/config/config_dev.yml` for example or create a new `app/config/services_dev.yml` that will be imported only in dev.**
 
 
 ## Credits
