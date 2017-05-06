@@ -2,8 +2,6 @@
 
 [![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
 [![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle?branch=master)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/0dd96e9b-18b9-47f8-8ae0-762afb740110.svg?style=flat-square)](https://insight.sensiolabs.com/projects/0dd96e9b-18b9-47f8-8ae0-762afb740110)
-[![Dependency Status](https://www.versioneye.com/user/projects/55802dee386664002000013a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55802dee386664002000013a)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsyshBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsyshBundle/?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
@@ -26,10 +24,11 @@ Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/R
 
 1. [Install](#install)
 1. [Usage](#usage)
-1. [PsySH as a debugger](doc/debugger.md)
-1. [Reflect like a boss](doc/reflect.md)
-1. [PsySH for breakpoints](doc/breakpoint.md)
+    1. [PsySH as a debugger](doc/debugger.md)
+    1. [Reflect like a boss](doc/reflect.md)
+    1. [PsySH for breakpoints](doc/breakpoint.md)
 1. [Customize PsySH](#customize-psysh)
+1. [Credits](#credits)
 
 
 ## Install
@@ -67,9 +66,15 @@ php app/console psysh
 or
 
 ```php
-// Somewhere in your Symfony app
+use function Fidry\PsyshBundle\psysh
 
-psysh()
+class X
+{
+    function foo()
+    {
+        psysh(get_defined_vars(), $this);   // Debug with the current context
+    }
+}
 ```
 
 ![PsySH Shell](doc/images/shell.png)
@@ -79,7 +84,6 @@ psysh()
 
 ## Customize PsySH
 
-# Customize PsySH
 
 You may also want to add a custom command or change the parameters. To achieve that, simply override the
 `psysh.shell` service declaration:
