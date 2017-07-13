@@ -17,7 +17,7 @@ What does it do exactly?
 | `$kernel`             | Instance of Symfony Kernel           |
 | `$parameters`         | Instance of Symfony parameters       |
 
-Aside from that it's the plain old [PsySH][1]! You can also [customize it](src/Resources/doc/custom.md) to add your own variables.
+Aside from that it's the plain old [PsySH][1]! You can also [customize it](#customize-psysh) to add your own variables.
 
 
 ## Documentation
@@ -60,6 +60,10 @@ public function registerBundles()
 ## Usage
 
 ```bash
+# Symfony > 3.0
+php bin/console psysh
+
+# Symfony < 3.0
 php app/console psysh
 ```
 
@@ -84,51 +88,61 @@ class X
 
 ## Customize PsySH
 
+### Adding a custom command
+Adding a custom command for PsySH is as simple as defining a service with `psysh.command` tag!
 
-You may also want to add a custom command or change the parameters. To achieve that, simply override the
-`psysh.shell` service declaration:
+```yaml
+services:
+    my_psysh_command:
+        class: Acme\Shell\MyCommand
+        tags:
+            - { name: psysh.command }
+```
+
+Or even simpler if you use Symfony 3.3+:
+
+```yaml
+services:
+    _defaults:
+        autonfigure: true
+        autowire: true
+        public: false
+
+    Acme\Shell\MyCommand: ~
+```
+
+> PsyshBundle provides autoconfiguration for custom Psysh command services, as long as they inherit from
+> `Psy\Command\ReflectingCommand` or `Psy\Command\Command`.
+
+### Adding custom variables
+It is possible to add custom variables to the shell via configuration.
+Variables can be of any type, container parameters references (e.g. `%kernel.debug`) or even services
+(prefixed with `@`, e.g. `"@my_service"`).
 
 ```yaml
 # app/config/config_dev.yml
 
-services:
-    psysh.shell:
-        class: Psy\Shell
-        calls:
-            - method: setScopeVariables
-              arguments:
-                -
-                    container: '@service_container'
-                    session: '@session'
+psysh:
+    variables:
+        foo: bar
+        router: "@router"
+        some: [thing, else]
+        debug: "%kernel.debug%"
 ```
 
-Now if you run `php app/console psysh` and then `ls`, you will see the variables `$container` and `$session`:
+Now if you run `php app/console psysh` and then `ls`, you will see the variables `$foo`, `$router`, `$some` and `$debug`,
+in addition to already defined variables:
 
 ```
 >>> ls
-Variables: $container, $session
+Variables: $foo, $router, $some, $debug...
 ```
 
-The default configuration is the following:
-
-```yaml
-# app/config/config_dev.yml
-
-services:
-    psysh.shell:
-        class: Psy\Shell
-        calls:
-            - method: setScopeVariables
-              arguments:
-                -
-                    kernel: '@kernel'
-                    container: '@service_container'
-                    parameters: '@=service("service_container").getParameterBag().all()'
-```
-
-**Note: PsyshBundle is by default registered to the Kernel only in dev/test environment and so are the bundle package.
-If you override the service declaration, ensure that it will not occur in production. You can declare your service
-in `app/config/config_dev.yml` for example or create a new `app/config/services_dev.yml` that will be imported only in dev.**
+Default variables are:
+- `$container` (the service container)
+- `$kernel`
+- `$parameters` (all container parameters)
+- `$self` (the PsySH shell itself)
 
 
 ## Credits
