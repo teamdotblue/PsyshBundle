@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -35,6 +36,9 @@ final class PsyshExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../../resources/config'));
         $loader->load('services.xml');
+        if (class_exists(TestContainer::class) && !$container->has('test.service_container')) {
+            $loader->load('test.xml');
+        }
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -43,12 +47,13 @@ final class PsyshExtension extends Extension
                 $value = new Reference(substr($value, 1));
             }
         }
+        $containerId = $container->has('test.service_container') ? 'test.service_container' : 'service_container';
         $container->findDefinition('psysh.shell')
             ->addMethodCall('setScopeVariables', [$config['variables'] + [
-                'container' => new Reference('service_container'),
+                'container' => new Reference($containerId),
                 'kernel' => new Reference('kernel'),
                 'self' => new Reference('psysh.shell'),
-                'parameters' => new Expression("service('service_container').getParameterBag().all()")
+                'parameters' => new Expression(sprintf("service('%s').getParameterBag().all()", $containerId))
             ]]);
         
         // Register Psysh commands for service autoconfiguration (Symfony 3.3+)

@@ -14,6 +14,8 @@ namespace Fidry\PsyshBundle\Command;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
@@ -59,6 +61,16 @@ class PsyshCommandIntegrationTest extends KernelTestCase
             10,
             true
         );
+    }
+
+    public function testContainerInstance()
+    {
+        $container = $this->shell->getScopeVariable('container');
+        if (class_exists(TestContainer::class)) {
+            $this->assertInstanceOf(TestContainer::class, $container);
+        } else {
+            $this->assertInstanceOf(Container::class, $container);
+        }
     }
 
     public function testFindShell()
