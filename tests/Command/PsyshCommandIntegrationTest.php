@@ -14,7 +14,6 @@ namespace Fidry\PsyshBundle\Command;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 
 /**
@@ -34,18 +33,15 @@ class PsyshCommandIntegrationTest extends KernelTestCase
      */
     private $command;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         self::bootKernel();
 
-        $this->shell = self::$kernel->getContainer()->get('psysh.shell');
-        $this->command = self::$kernel->getContainer()->get('psysh.command.shell_command');
+        $this->shell = self::$container->get('psysh.shell');
+        $this->command = self::$container->get('psysh.command.shell_command');
     }
 
-    public function testScopeVariables()
+    public function testScopeVariables(): void
     {
         $this->assertEqualsCanonicalizing(
             [
@@ -60,22 +56,19 @@ class PsyshCommandIntegrationTest extends KernelTestCase
         );
     }
 
-    public function testContainerInstance()
+    public function testContainerInstance(): void
     {
         $container = $this->shell->getScopeVariable('container');
-        if (self::$kernel->getContainer()->has('test.service_container')) {
-            $this->assertInstanceOf(TestContainer::class, $container);
-        } else {
-            $this->assertInstanceOf(Container::class, $container);
-        }
+
+        $this->assertInstanceOf(TestContainer::class, $container);
     }
 
-    public function testFindShell()
+    public function testFindShell(): void
     {
         $application = new Application(self::$kernel);
         $application->add($this->command);
         $application->find('psysh');
 
-        $this->assertTrue(true);
+        $this->addToAssertionCount(1);
     }
 }

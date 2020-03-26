@@ -60,12 +60,6 @@ public function registerBundles()
 ## Usage
 
 ```bash
-# Symfony > 3.0
-php bin/console psysh
-
-# Symfony < 3.0
-php app/console psysh
-
 # Symfony > 4.0
 bin/console psysh
 ```
@@ -73,7 +67,7 @@ bin/console psysh
 or
 
 ```php
-use function Fidry\PsyshBundle\psysh
+use function psysh
 
 class X
 {

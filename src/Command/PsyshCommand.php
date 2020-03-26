@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of the PsyshBundle package.
@@ -11,7 +11,7 @@
 
 namespace Fidry\PsyshBundle\Command;
 
-use Psy\Shell;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,34 +22,22 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class PsyshCommand extends Command
 {
-    /**
-     * @var Shell
-     */
-    private $shell;
+    private $psysh;
 
-    /**
-     * @param Shell $shell
-     */
-    public function __construct(Shell $shell)
+    public function __construct(Application $psysh)
     {
         parent::__construct();
 
-        $this->shell = $shell;
+        $this->psysh = $psysh;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Start PsySH for Symfony');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return (int) $this->shell->run();
+        return (int) $this->psysh->run($input, $output);
     }
 }

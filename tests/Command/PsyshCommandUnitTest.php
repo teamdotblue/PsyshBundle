@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of the PsyshBundle package.
@@ -16,6 +16,7 @@ use Psy\Shell;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use function is_a;
 
 /**
  * @covers \Fidry\PsyshBundle\Command\PsyshCommand
@@ -24,37 +25,42 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class PsyshCommandUnitTest extends TestCase
 {
-    public function testIsASymfonyCommand()
+    public function testIsASymfonyCommand(): void
     {
         $this->assertTrue(is_a(PsyshCommand::class, Command::class, true));
     }
 
-    public function testConfiguration()
+    public function testConfiguration(): void
     {
-        $shellProphecy = $this->prophesize('Psy\Shell');
-        $shellProphecy->run()->shouldNotBeCalled();
-        /* @var Shell $shell */
-        $shell = $shellProphecy->reveal();
+        $shell = $this->createMock(Shell::class);
+        $shell
+            ->expects($this->never())
+            ->method($this->anything())
+        ;
 
         $command = new PsyshCommand($shell);
+
         $this->assertEquals('Start PsySH for Symfony', $command->getDescription());
     }
 
-    public function testExecute()
+    public function testExecute(): void
     {
-        $shellProphecy = $this->prophesize(Shell::class);
-        $shellProphecy->run()->shouldBeCalled()->willReturn(1);
-        /* @var Shell $shell */
-        $shell = $shellProphecy->reveal();
+        $shell = $this->createMock(Shell::class);
+        $shell
+            ->expects($this->once())
+            ->method('run')
+            ->willReturn(1)
+        ;
 
-        /* @var InputInterface $input */
-        $input = $this->prophesize(InputInterface::class)->reveal();
-        /* @var OutputInterface $output */
-        $output = $this->prophesize(OutputInterface::class)->reveal();
+        $input = $this->createMock(InputInterface::class);
+
+        $output = $this->createMock(OutputInterface::class);
+        $output
+            ->expects($this->never())
+            ->method($this->anything())
+        ;
 
         $command = new PsyshCommand($shell);
         $command->run($input, $output);
-
-        $shellProphecy->run()->shouldHaveBeenCalledTimes(1);
     }
 }

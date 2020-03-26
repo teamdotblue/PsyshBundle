@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of the PsyshBundle package.
@@ -24,13 +24,13 @@ class PsyshBundleTest extends KernelTestCase
     /**
      * Test that the bundle loads and compiles.
      */
-    public function testServicesLoading()
+    public function testServicesLoading(): void
     {
         static::bootKernel();
 
         $this->assertInstanceOf(
             Shell::class,
-            static::$kernel->getContainer()->get('psysh.shell')
+            static::$container->get('psysh.shell')
         );
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of the PsyshBundle package.
@@ -11,7 +11,6 @@
 
 namespace Fidry\PsyshBundle\DependencyInjection\Compiler;
 
-use Psy\Command\Command as PsyshCommand;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -25,17 +24,20 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 final class AddPsyshCommandPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has('psysh.shell')) {
             return;
         }
 
         $commands = [];
+
         foreach ($container->findTaggedServiceIds('psysh.command') as $id => $attributes) {
             // Workaround to avoid Psysh commands to be registered as regular console commands
-            // (conflict with service autoconfiguration as Psysh commands inherit from \Symfony\Component\Console\Command\Command as well
-            // Note that this compiler pass must run with a higher priority than AddConsoleCommandPass to be efficient.
+            // (conflict with service autoconfiguration as Psysh commands inherit from
+            // \Symfony\Component\Console\Command\Command as well
+            // Note that this compiler pass must run with a higher priority than
+            // AddConsoleCommandPass to be efficient.
             $container->findDefinition($id)->clearTag('console.command');
             $commands[] = new Reference($id);
         }

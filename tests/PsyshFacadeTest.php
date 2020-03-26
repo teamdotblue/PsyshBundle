@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of the PsyshBundle package.
@@ -11,6 +11,7 @@
 
 namespace Fidry\PsyshBundle;
 
+use ReflectionClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,16 +24,16 @@ class PsyshFacadeTest extends KernelTestCase
     /**
      * Test that the bundle loads and compiles.
      */
-    public function testServicesLoading()
+    public function testServicesLoading(): void
     {
         static::bootKernel();
 
         PsyshFacade::init();
 
-        $shellRefl= (new \ReflectionClass(PsyshFacade::class))->getProperty('shell');
-        $shellRefl->setAccessible(true);
+        $shellReflection= (new ReflectionClass(PsyshFacade::class))->getProperty('shell');
+        $shellReflection->setAccessible(true);
 
-        $shell = $shellRefl->getValue();
+        $shell = $shellReflection->getValue();
 
         $this->assertNotNull($shell);
     }
