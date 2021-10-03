@@ -5,5 +5,3 @@ framework:
         strict_requirements: '%kernel.debug%'
         utf8: true
     test: ~
-    session:
-        storage_factory_id: session.storage.factory.mock_file
