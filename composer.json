@@ -15,19 +15,18 @@
             "homepage": "https://github.com/theofidry"
         }
     ],
-
     "require": {
         "php": ">=7.3",
         "psy/psysh": "^0.10",
-        "symfony/error-handler": "^5.0|^4.4",
-        "symfony/expression-language": "^5.0|^4.4",
-        "symfony/framework-bundle": "^5.0|^4.4"
+        "symfony/error-handler": "^6.0|^5.3|^4.4.31",
+        "symfony/expression-language": "^6.0|^5.3|^4.4.31",
+        "symfony/framework-bundle": "^6.0|^5.3|^4.4.31"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "symfony/symfony": "^5.0|^4.4"
+        "phpunit/phpunit": "^9.0|^8.0",
+        "symfony/symfony": "^6.0|^5.3|^4.4.31",
+        "symfony/phpunit-bridge": "^6.0|^5.3|^4.4.31"
     },
-
     "autoload": {
         "psr-4": {
             "Fidry\\PsyshBundle\\": "src"
@@ -41,7 +40,6 @@
             "Fidry\\PsyshBundle\\": "tests"
         }
     },
-
     "config": {
         "bin-dir": "bin",
         "sort-packages": true
