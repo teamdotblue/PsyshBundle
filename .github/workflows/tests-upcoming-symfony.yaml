@@ -34,9 +34,8 @@ jobs:
           composer config minimum-stability dev
           composer config prefer-stable false
           composer update --no-interaction --optimize-autoloader
-          vendor/bin/simple-phpunit install
 
       - name: 'Run tests'
         env:
           SYMFONY_DEPRECATIONS_HELPER: 'max[indirect]=9999&max[direct]=0&max[self]=9999'
-        run: vendor/bin/simple-phpunit -v || exit 0
+        run: bin/phpunit -v || exit 0
