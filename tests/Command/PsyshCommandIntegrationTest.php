@@ -37,8 +37,8 @@ class PsyshCommandIntegrationTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->shell = self::$container->get('psysh.shell');
-        $this->command = self::$container->get('psysh.command.shell_command');
+        $this->shell = self::getContainer()->get('psysh.shell');
+        $this->command = self::getContainer()->get('psysh.command.shell_command');
     }
 
     public function testScopeVariables(): void

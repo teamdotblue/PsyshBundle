@@ -34,4 +34,6 @@ jobs:
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
+        env:
+          SYMFONY_DEPRECATIONS_HELPER: 'weak'
         run: bin/phpunit --verbose
