@@ -42,10 +42,10 @@ class AppKernel extends Kernel
         $params = [];
         if (version_compare(\Symfony\Component\HttpKernel\Kernel::VERSION, '5.3.0') >= 0)
         {
-            $params = ["session" => ['storage_id' => 'session.storage.mock_file']];
+            $params = ["session" => ['storage_factory_id' => 'session.storage.factory.mock_file']];
         }
         else {
-            $params = ["session" => ['storage_factory_id' => 'session.storage.factory.mock_file']];
+            $params = ["session" => ['storage_id' => 'session.storage.mock_file']];
         }
 
         // PHP equivalent of config/packages/framework.yaml

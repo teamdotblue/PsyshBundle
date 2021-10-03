@@ -28,9 +28,11 @@ class PsyshBundleTest extends KernelTestCase
     {
         static::bootKernel();
 
-        $this->assertInstanceOf(
-            Shell::class,
-            static::getContainer()->get('psysh.shell')
-        );
+        if (version_compare(\Symfony\Component\HttpKernel\Kernel::VERSION, '5.3.0') >= 0) {
+            $this->assertInstanceOf(Shell::class, static::getContainer()->get('psysh.shell'));
+        }
+        else{
+            $this->assertInstanceOf(Shell::class, static::$container->get('psysh.shell'));
+        }
     }
 }

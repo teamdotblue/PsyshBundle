@@ -37,8 +37,14 @@ class PsyshCommandIntegrationTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->shell = self::getContainer()->get('psysh.shell');
-        $this->command = self::getContainer()->get('psysh.command.shell_command');
+        if (version_compare(\Symfony\Component\HttpKernel\Kernel::VERSION, '5.3.0') >= 0) {
+            $this->shell = self::getContainer()->get('psysh.shell');
+            $this->command = self::getContainer()->get('psysh.command.shell_command');
+        }
+        else{
+            $this->shell = self::$container->get('psysh.shell');
+            $this->command = self::$container->get('psysh.command.shell_command');
+        }
     }
 
     public function testScopeVariables(): void
