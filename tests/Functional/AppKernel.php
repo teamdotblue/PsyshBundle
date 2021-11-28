@@ -35,7 +35,7 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config.yml');
     }
 
-    # to support different symfony versions we need to handle cofnigs differently
+    # to support different symfony versions we need to handle configs differently
     protected function configureContainer(ContainerConfigurator $container, LoaderInterface $loader)
     {
         # symfony 5.3 https://github.cgs.me/symfony/symfony/blob/5.4/UPGRADE-5.3.md#frameworkbundle
