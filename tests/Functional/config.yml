@@ -3,5 +3,4 @@ framework:
     router:
         resource: ~
         strict_requirements: '%kernel.debug%'
-        utf8: true
     test: ~
