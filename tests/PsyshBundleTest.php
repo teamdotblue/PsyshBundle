@@ -13,6 +13,7 @@ namespace Fidry\PsyshBundle;
 
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * @coversNothing
@@ -28,9 +29,7 @@ class PsyshBundleTest extends KernelTestCase
     {
         static::bootKernel();
 
-        $this->assertInstanceOf(
-            Shell::class,
-            static::$container->get('psysh.shell')
-        );
+        $container = version_compare(Kernel::VERSION, '5.3.0') >= 0 ? static::getContainer() : static::$container;
+        $this->assertInstanceOf(Shell::class, $container->get('psysh.shell'));
     }
 }

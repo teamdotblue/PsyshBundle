@@ -4,5 +4,3 @@ framework:
         resource: ~
         strict_requirements: '%kernel.debug%'
     test: ~
-    session:
-        storage_id: session.storage.mock_file

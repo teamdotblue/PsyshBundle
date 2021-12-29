@@ -14,6 +14,7 @@ namespace Fidry\PsyshBundle\Functional;
 use Fidry\PsyshBundle\PsyshBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
@@ -32,5 +33,14 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/config.yml');
+    }
+
+    protected function configureContainer(ContainerConfigurator $container, LoaderInterface $loader)
+    {
+        $params = version_compare(Kernel::VERSION, '5.3.0') >= 0
+            ? ["session" => ['storage_factory_id' => 'session.storage.factory.mock_file']]
+            : ["session" => ['storage_id' => 'session.storage.mock_file']];
+
+        $container->extension('framework', [$params]);
     }
 }
