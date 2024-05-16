@@ -1,81 +1,67 @@
-<?php declare(strict_types=1);
+<?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\DependencyInjection;
+declare(strict_types=1);
 
+namespace TeamDotBlue\PsyshBundle\DependencyInjection;
+
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Psy\Command\Command;
+use Psy\Shell;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\ExpressionLanguage\Expression;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+
 use function array_merge;
 use function is_string;
 use function sprintf;
-use function strpos;
 use function substr;
 
-/**
- * This is the class that loads and manages your bundle configuration.
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
- *
- * @author Théo FIDRY <theo.fidry@gmail.com>
- *
- * @private
- */
-final class PsyshExtension extends Extension
+final class PsyshExtension extends ConfigurableExtension
 {
-    private const CONFIG_DIR = __DIR__.'/../../resources/config';
-
     /**
-     * {@inheritdoc}
+     * @inheritDoc
+     *
+     * @param array{variables: array<mixed>} $mergedConfig
      */
-    public function load(array $configs, ContainerBuilder $container): void
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
-        $loader = new Loader\XmlFileLoader(
-            $container,
-            new FileLocator(self::CONFIG_DIR),
-        );
-        $loader->load('services.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'), $container->getParameter('kernel.environment'));
+        $loader->load('services.php');
 
-        $config = $this->processConfiguration(new Configuration(), $configs);
-
-        foreach ($config['variables'] as $name => $value) {
-            if (is_string($value) && strpos($value, '@') === 0) {
+        foreach ($mergedConfig['variables'] as $name => $value) {
+            if (is_string($value) && str_starts_with($value, '@')) {
                 $value = new Reference(substr($value, 1));
             }
 
-            $config['variables'][$name] = $value;
+            $mergedConfig['variables'][$name] = $value;
         }
 
-        $containerId = 'test.service_container';
-
+        $containerId = 'service_container';
         $container
-            ->findDefinition('psysh.shell')
+            ->findDefinition(Shell::class)
             ->addMethodCall(
                 'setScopeVariables',
                 [array_merge(
-                    $config['variables'],
+                    $mergedConfig['variables'],
                     [
                         'container' => new Reference($containerId),
                         'kernel' => new Reference('kernel'),
                         'self' => new Reference('psysh.shell'),
                         'parameters' => new Expression(sprintf(
                             "service('%s').getParameterBag().all()",
-                            $containerId
-                        ))
-                    ]
-                )]
+                            $containerId,
+                        )),
+                    ],
+                )],
             )
         ;
 

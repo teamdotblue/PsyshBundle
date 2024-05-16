@@ -1,43 +1,31 @@
-<?php declare(strict_types=1);
+<?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Command;
+declare(strict_types=1);
 
-use Psy\Output\ShellOutput;
+namespace TeamDotBlue\PsyshBundle\Command;
+
 use Psy\Shell;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * @author Adrian PALMER <navitronic@gmail.com>
- * @author Théo FIDRY    <theo.fidry@gmail.com>
- */
+#[AsCommand('psysh', 'Start PsySH for Symfony')]
 final class PsyshCommand extends Command
 {
-    private Shell $psysh;
-
-    public function __construct(Shell $psysh)
+    public function __construct(private readonly Shell $psysh)
     {
         parent::__construct();
-
-        $this->psysh = $psysh;
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Start PsySH for Symfony');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

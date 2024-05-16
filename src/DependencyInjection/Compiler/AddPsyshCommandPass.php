@@ -1,19 +1,21 @@
-<?php declare(strict_types=1);
+<?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\DependencyInjection\Compiler;
+declare(strict_types=1);
 
+namespace TeamDotBlue\PsyshBundle\DependencyInjection\Compiler;
+
+use Psy\Shell;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
+use TeamDotBlue\PsyshBundle\PsyshBundle;
 
 /**
  * Compiler pass allowing to add Psysh commands dynamically
@@ -26,13 +28,13 @@ final class AddPsyshCommandPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->has('psysh.shell')) {
+        if (!$container->has(Shell::class)) {
             return;
         }
 
         $commands = [];
 
-        foreach ($container->findTaggedServiceIds('psysh.command') as $id => $attributes) {
+        foreach (array_keys($container->findTaggedServiceIds(PsyshBundle::COMMAND_TAG)) as $id) {
             // Workaround to avoid Psysh commands to be registered as regular console commands
             // (conflict with service autoconfiguration as Psysh commands inherit from
             // \Symfony\Component\Console\Command\Command as well
@@ -42,7 +44,7 @@ final class AddPsyshCommandPass implements CompilerPassInterface
             $commands[] = new Reference($id);
         }
 
-        $shellRef = $container->findDefinition('psysh.shell');
+        $shellRef = $container->findDefinition(Shell::class);
         $shellRef->addMethodCall('addCommands', [$commands]);
     }
 }

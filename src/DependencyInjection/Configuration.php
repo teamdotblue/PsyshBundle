@@ -1,15 +1,15 @@
-<?php declare(strict_types=1);
+<?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\DependencyInjection;
+declare(strict_types=1);
+
+namespace TeamDotBlue\PsyshBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

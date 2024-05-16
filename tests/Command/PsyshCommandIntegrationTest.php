@@ -1,29 +1,27 @@
 <?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Command;
+declare(strict_types=1);
 
+namespace TeamDotBlue\PsyshBundle\Test\Command;
+
+use Symfony\Component\DependencyInjection\Container;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
-use Symfony\Component\HttpKernel\Kernel;
-use function array_keys;
-use function version_compare;
 
-/**
- * @author Théo FIDRY <theo.fidry@gmail.com>
- *
- * @coversNothing
- */
+use TeamDotBlue\PsyshBundle\Command\PsyshCommand;
+
+use function array_keys;
+
+#[CoversNothing]
 class PsyshCommandIntegrationTest extends KernelTestCase
 {
     private Shell $shell;
@@ -49,15 +47,13 @@ class PsyshCommandIntegrationTest extends KernelTestCase
                 'self',
             ],
             array_keys($this->shell->getScopeVariables()),
-            'Expected shell service to have scope variables'
+            'Expected shell service to have scope variables',
         );
     }
 
     public function testContainerInstance(): void
     {
-        $container = $this->shell->getScopeVariable('container');
-
-        $this->assertInstanceOf(TestContainer::class, $container);
+        $this->assertInstanceOf(Container::class, $this->shell->getScopeVariable('container'));
     }
 
     public function testFindShell(): void

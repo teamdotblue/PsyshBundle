@@ -1,0 +1,113 @@
+name: PHP
+
+on:
+    pull_request:
+    push:
+        branches: [ '4.x' ]
+
+jobs:
+    tests:
+        runs-on: 'ubuntu-latest'
+        strategy:
+            fail-fast: false
+            matrix:
+                symfony-version:
+                  - '^6.0'
+                  - '^7.0'
+        steps:
+            - name: 'Checkout code'
+              uses: actions/checkout@v2.3.3
+
+            - name: 'Install PHP with extensions'
+              uses: shivammathur/setup-php@2.7.0
+              with:
+                  coverage: xdebug
+                  php-version: '8.3'
+                  tools: composer:v2
+                  extensions: mbstring
+                  ini-values: date.timezone=UTC
+
+            - name: Export Symfony version ${{ matrix.symfony }}
+              run: export SYMFONY_REQUIRE=${{ matrix.symfony }}
+
+            - name: Install symfony/flex
+              run: composer require --dev --no-progress --no-scripts --no-plugins symfony/flex
+
+            - name: 'Install project dependencies'
+              run: composer update --prefer-dist --prefer-stable
+
+            - name: 'Run tests'
+              run: ./vendor/bin/phpunit
+    phpstan:
+        runs-on: 'ubuntu-latest'
+        strategy:
+            fail-fast: false
+            matrix:
+                symfony-version:
+                - '^6.0'
+                - '^7.0'
+        steps:
+        - name: 'Checkout code'
+          uses: actions/checkout@v2.3.3
+
+        - name: 'Install PHP with extensions'
+          uses: shivammathur/setup-php@2.7.0
+          with:
+              coverage: none
+              php-version: '8.3'
+              tools: composer:v2
+              extensions: mbstring
+              ini-values: date.timezone=UTC
+
+        - name: Export Symfony version ${{ matrix.symfony }}
+          run: export SYMFONY_REQUIRE=${{ matrix.symfony }}
+
+        - name: Install symfony/flex
+          run: composer require --dev --no-progress --no-scripts --no-plugins symfony/flex
+
+        - name: 'Install project dependencies'
+          run: composer update --prefer-dist --prefer-stable
+
+        - name: 'Run PHPSTAN'
+          run: ./vendor/bin/phpstan
+    codestyle:
+        runs-on: 'ubuntu-latest'
+        steps:
+        - name: 'Checkout code'
+          uses: actions/checkout@v2.3.3
+
+        - name: 'Install PHP with extensions'
+          uses: shivammathur/setup-php@2.7.0
+          with:
+              coverage: none
+              php-version: '8.3'
+              tools: composer:v2
+              extensions: mbstring
+              ini-values: date.timezone=UTC
+
+        - name: 'Install project dependencies'
+          run: composer update --prefer-dist --prefer-stable
+
+        - name: 'Run tests'
+          run: ./vendor/bin/php-cs-fixer check -v --using-cache=no --show-progress=none
+
+    rector:
+        runs-on: 'ubuntu-latest'
+        steps:
+        - name: 'Checkout code'
+          uses: actions/checkout@v2.3.3
+
+        - name: 'Install PHP with extensions'
+          uses: shivammathur/setup-php@2.7.0
+          with:
+              coverage: none
+              php-version: '8.3'
+              tools: composer:v2
+              extensions: mbstring
+              ini-values: date.timezone=UTC
+
+        - name: 'Install project dependencies'
+          run: composer update --prefer-dist --prefer-stable
+
+        - name: 'Run tests'
+          run: ./vendor/bin/rector process -n
