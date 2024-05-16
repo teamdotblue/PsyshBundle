@@ -1,0 +1,8 @@
+parameters:
+    level: 6
+    paths:
+    - src/
+    - tests/
+    ignoreErrors:
+    - path: 'src/DependencyInjection/Configuration'
+      message: '#Call to an undefined method .+children#'

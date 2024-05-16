@@ -1,40 +1,34 @@
 <?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle;
+declare(strict_types=1);
 
-use Fidry\PsyshBundle\DependencyInjection\Compiler\AddPsyshCommandPass;
+namespace TeamDotBlue\PsyshBundle;
+
+use TeamDotBlue\PsyshBundle\DependencyInjection\Compiler\AddPsyshCommandPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * @author Adrian PALMER <navitronic@gmail.com>
- * @author Théo FIDRY    <theo.fidry@gmail.com>
- *
- * @private
- */
 final class PsyshBundle extends Bundle
 {
+    public const COMMAND_TAG = 'psysh.command';
+
     public function boot(): void
     {
         parent::boot();
-
-        $this->container->get('psysh.facade');
+        $this->container->get(PsyshFacade::class);
     }
 
     public function build(ContainerBuilder $container): void
     {
         parent::build($container);
-
         // Ensures that AddPsyshCommandPass runs before AddConsoleCommandPass to avoid
         // autoconfiguration conflicts.
         $container->addCompilerPass(

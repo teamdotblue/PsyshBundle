@@ -1,8 +1,6 @@
 # PsyshBundle
 
-[![Package version](http://img.shields.io/packagist/v/theofidry/psysh.svg?style=flat-square)](https://packagist.org/packages/theofidry/psysh-bundle)
-[![Build Status](https://img.shields.io/travis/theofidry/PsyshBundle.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/PsyshBundle?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/PsyshBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/PsyshBundle/?branch=master)
+[![Package version](http://img.shields.io/packagist/v/teamdotblue/psysh.svg?style=flat-square)](https://packagist.org/packages/teamdotblue/psysh-bundle)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
 A bundle to use the php REPL [PsySH][1] with [Symfony][2]. Learn more at [psysh.org][1] and check out the [Interactive Debugging in PHP talk from OSCON](https://presentate.com/bobthecow/talks/php-for-pirates) on Presentate.
@@ -36,7 +34,7 @@ Aside from that it's the plain old [PsySH][1]! You can also [customize it](#cust
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
 
 ```bash
-composer require --dev theofidry/psysh-bundle
+composer require --dev teamdotblue/psysh-bundle
 ```
 
 Then, enable the bundle by updating your `app/AppKernel.php` file to enable the bundle:  
@@ -142,14 +140,9 @@ Default variables are:
 - `$parameters` (all container parameters)
 - `$self` (the PsySH shell itself)
 
-
 ## Credits
 
-This bundle is developed by [Théo FIDRY](https://github.com/theofidry). This project has been made possible thanks to:
-
-* [Justin Hileman](https://github.com/bobthecow): author of [PsySH][1] and [all the contributors of the PsySH project](https://github.com/bobthecow/psysh/graphs/contributors)
-* [Adrian Palmer](https://github.com/navitronic): gave the lead for porting [PsySH][1] on [Symfony][2]
-
+Original package and copyright: https://github.com/theofidry/PsyshBundle
 
 [1]: https://psysh.org/
 [2]: https://symfony.com/

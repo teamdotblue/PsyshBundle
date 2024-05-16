@@ -1,27 +1,25 @@
-<?php declare(strict_types=1);
+<?php
 
-/*
- * This file is part of the PsyshBundle package.
- *
- * (c) Théo FIDRY <theo.fidry@gmail.com>
+/**
+ * @copyright Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Fidry\PsyshBundle\Functional;
+declare(strict_types=1);
 
-use Fidry\PsyshBundle\PsyshBundle;
+namespace TeamDotBlue\PsyshBundle\Test\Functional;
+
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\Kernel;
+use TeamDotBlue\PsyshBundle\PsyshBundle;
 
-/**
- * @author Théo FIDRY <theo.fidry@gmail.com>
- */
 class AppKernel extends Kernel
 {
+    /** @return array<Bundle> */
     public function registerBundles(): array
     {
         return [
@@ -32,6 +30,6 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load(__DIR__.'/config.yaml');
+        $loader->load(__DIR__ . '/config.php');
     }
 }
