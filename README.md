@@ -1,6 +1,6 @@
 # PsyshBundle
 
-[![Package version](http://img.shields.io/packagist/v/teamdotblue/psysh.svg?style=flat-square)](https://packagist.org/packages/teamdotblue/psysh-bundle)
+[![Package version](http://img.shields.io/packagist/v/teamdotblue/psysh-bundle.svg?style=flat-square)](https://packagist.org/packages/teamdotblue/psysh-bundle)
 [![License](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
 
 A bundle to use the php REPL [PsySH][1] with [Symfony][2]. Learn more at [psysh.org][1] and check out the [Interactive Debugging in PHP talk from OSCON](https://presentate.com/bobthecow/talks/php-for-pirates) on Presentate.
