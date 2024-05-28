@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace TeamDotBlue\PsyshBundle\DependencyInjection;
 
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Psy\Command\Command;
 use Psy\Shell;
@@ -46,24 +47,18 @@ final class PsyshExtension extends ConfigurableExtension
         }
 
         $containerId = 'service_container';
-        $container
-            ->findDefinition(Shell::class)
-            ->addMethodCall(
-                'setScopeVariables',
-                [array_merge(
-                    $mergedConfig['variables'],
-                    [
-                        'container' => new Reference($containerId),
-                        'kernel' => new Reference('kernel'),
-                        'self' => new Reference('psysh.shell'),
-                        'parameters' => new Expression(sprintf(
-                            "service('%s').getParameterBag().all()",
-                            $containerId,
-                        )),
-                    ],
-                )],
-            )
-        ;
+        $container->setDefinition(PsyshVariables::class, new Definition(PsyshVariables::class, [array_merge(
+            $mergedConfig['variables'],
+            [
+                'container' => new Reference($containerId),
+                'kernel' => new Reference('kernel'),
+                'self' => new Reference('psysh.shell'),
+                'parameters' => new Expression(sprintf(
+                    "service('%s').getParameterBag().all()",
+                    $containerId,
+                )),
+            ],
+        )]));
 
         $container
             ->registerForAutoconfiguration(Command::class)
