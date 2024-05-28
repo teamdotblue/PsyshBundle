@@ -34,6 +34,6 @@ final class AddPsyshVariablePass implements CompilerPassInterface
 
         $container
             ->findDefinition(Shell::class)
-            ->addMethodCall('setScopeVariables', [new Expression( "service('TeamDotBlue\\\\PsyshBundle\\\\DependencyInjection\\\\PsyshVariables').variables")]);
+            ->addMethodCall('setScopeVariables', [new Expression("service('TeamDotBlue\\\\PsyshBundle\\\\DependencyInjection\\\\PsyshVariables').variables")]);
     }
 }

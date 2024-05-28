@@ -14,7 +14,6 @@ namespace TeamDotBlue\PsyshBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Psy\Command\Command;
-use Psy\Shell;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

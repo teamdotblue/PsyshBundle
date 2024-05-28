@@ -12,14 +12,13 @@ declare(strict_types=1);
 namespace TeamDotBlue\PsyshBundle;
 
 use Symfony\Component\DependencyInjection\ChildDefinition;
-use Symfony\Component\DependencyInjection\Exception\LogicException;
-use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use TeamDotBlue\PsyshBundle\Attribute\AsPsyshVariable;
 use TeamDotBlue\PsyshBundle\DependencyInjection\Compiler\AddPsyshCommandPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use TeamDotBlue\PsyshBundle\DependencyInjection\Compiler\AddPsyshVariablePass;
+use ReflectionClass;
 
 final class PsyshBundle extends Bundle
 {
@@ -49,7 +48,7 @@ final class PsyshBundle extends Bundle
             9,
         );
 
-        $container->registerAttributeForAutoconfiguration(AsPsyshVariable::class, static function (ChildDefinition $definition, AsPsyshVariable $attribute, \ReflectionClass $reflector) {
+        $container->registerAttributeForAutoconfiguration(AsPsyshVariable::class, static function (ChildDefinition $definition, AsPsyshVariable $attribute, ReflectionClass $reflector): void {
             $definition->addTag(self::VARIABLE_TAG, get_object_vars($attribute));
         });
     }
