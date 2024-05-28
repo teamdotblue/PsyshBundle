@@ -6,3 +6,5 @@ parameters:
     ignoreErrors:
     - path: 'src/DependencyInjection/Configuration'
       message: '#Call to an undefined method .+children#'
+    - path: 'src/PsyshBundle'
+      message: '#ReflectionClass\): void given#'
