@@ -19,10 +19,11 @@ return static function (ContainerConfigurator $configurator): void {
 
     $services
         ->set(Configuration::class)
-            ->call('setHistoryFile', ['%kernel.cache_dir%/psysh_history'])
+            ->arg('$config', param('psysh.config'))
 
         ->set(Shell::class)
             ->public()
+            ->arg('$config', service(Configuration::class)->nullOnInvalid())
         ->alias('psysh.shell', Shell::class)
 
         ->set(PsyshCommand::class)

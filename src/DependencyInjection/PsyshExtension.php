@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace TeamDotBlue\PsyshBundle\DependencyInjection;
 
+use Psy\Shell;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Psy\Command\Command;
@@ -30,7 +31,7 @@ final class PsyshExtension extends ConfigurableExtension
     /**
      * @inheritDoc
      *
-     * @param array{variables: array<mixed>} $mergedConfig
+     * @param array{variables: array<mixed>, config?: array<mixed>} $mergedConfig
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
@@ -46,12 +47,13 @@ final class PsyshExtension extends ConfigurableExtension
         }
 
         $containerId = 'service_container';
+        $container->setParameter('psysh.config', $mergedConfig['config'] ?? []);
         $container->setDefinition(PsyshVariables::class, new Definition(PsyshVariables::class, [array_merge(
             $mergedConfig['variables'],
             [
                 'container' => new Reference($containerId),
                 'kernel' => new Reference('kernel'),
-                'self' => new Reference('psysh.shell'),
+                'self' => new Reference(Shell::class),
                 'parameters' => new Expression(sprintf(
                     "service('%s').getParameterBag().all()",
                     $containerId,
