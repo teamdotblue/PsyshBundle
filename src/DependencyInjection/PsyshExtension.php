@@ -47,6 +47,7 @@ final class PsyshExtension extends ConfigurableExtension
         }
 
         $containerId = 'service_container';
+        $container->setParameter('psysh.base_dir', $mergedConfig['baseDir'] ?? '%kernel.cache_dir%/psysh');
         $container->setParameter('psysh.config', $mergedConfig['config'] ?? []);
         $container->setDefinition(PsyshVariables::class, new Definition(PsyshVariables::class, [array_merge(
             $mergedConfig['variables'],
