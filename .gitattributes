@@ -1,0 +1,9 @@
+/.github/                   export-ignore
+/doc/                       export-ignore
+/tests                      export-ignore
+/build/                     export-ignore
+/.php-cs-fixer.dist.php     export-ignore
+/phpstan.dist.neon          export-ignore
+/phpunit.xml.dist           export-ignore
+/rector.php                 export-ignore
+/symfony.lock               export-ignore

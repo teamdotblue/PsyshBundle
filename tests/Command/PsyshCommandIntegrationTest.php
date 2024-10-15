@@ -16,7 +16,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-
 use TeamDotBlue\PsyshBundle\Command\PsyshCommand;
 
 use function array_keys;
