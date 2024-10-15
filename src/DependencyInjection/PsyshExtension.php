@@ -31,7 +31,7 @@ final class PsyshExtension extends ConfigurableExtension
     /**
      * @inheritDoc
      *
-     * @param array{variables: array<mixed>, config?: array<mixed>} $mergedConfig
+     * @param array{variables: array<mixed>, config?: array<mixed>, baseDir?: string} $mergedConfig
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
