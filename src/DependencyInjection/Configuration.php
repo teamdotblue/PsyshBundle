@@ -53,21 +53,33 @@ final class Configuration implements ConfigurationInterface
         'yolo',
     ];
 
+    private const DEFAULT_OPTIONS = [
+        'configDir' => '%psysh.base_dir%/config',
+        'dataDir' => '%psysh.base_dir%/data',
+        'runtimeDir' => '%psysh.base_dir%/runtime',
+        'historyFile' => '%psysh.base_dir%/history',
+    ];
+
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('psysh');
 
         $nodes = $treeBuilder->getRootNode()->children();
-        $nodes->arrayNode('variables')
-            ->info('Define additional variables to be exposed in Psysh')
-            ->useAttributeAsKey('variable_name')
-            ->example([
-                'debug' => '%kernel.debug%',
-                'my_service' => '@my.service',
-                'os' => ['linux', 'macos', 'losedows'],
-            ])
-            ->prototype('variable')->end()
-        ->end();
+        $nodes
+            ->arrayNode('variables')
+                ->info('Define additional variables to be exposed in Psysh')
+                ->useAttributeAsKey('variable_name')
+                ->example([
+                    'debug' => '%kernel.debug%',
+                    'my_service' => '@my.service',
+                    'os' => ['linux', 'macos', 'losedows'],
+                ])
+                ->prototype('variable')->end()
+            ->end();
+
+        $nodes->scalarNode('baseDir')
+            ->info('Set the base directory for psysh configuration')
+            ->defaultValue('%kernel.cache_dir%/psysh');
 
         $config = $nodes->arrayNode('config')
             ->info('Define the configuration for ' . \Psy\Configuration::class)
@@ -77,8 +89,8 @@ final class Configuration implements ConfigurationInterface
             $node = $config->variableNode($option)
                 ->info(sprintf('Set the value for `' . \Psy\Configuration::class . '::set%s`', ucfirst($option)));
 
-            if ('historyFile' === $option) {
-                $node->defaultValue('%kernel.cache_dir%/psysh_history');
+            if (array_key_exists($option, self::DEFAULT_OPTIONS)) {
+                $node->defaultValue(self::DEFAULT_OPTIONS[$option]);
             }
         }
 
