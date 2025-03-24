@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TeamDotBlue\PsyshBundle\DependencyInjection\Compiler;
 
 use Psy\Shell;
+use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -24,7 +25,9 @@ final class AddPsyshVariablePass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds(PsyshBundle::VARIABLE_TAG) as $id => $tag) {
             foreach ($tag as $t) {
-                $variables[$t['variable']] = new Reference($id);
+                $variable = $t['variable'] ?? lcfirst((new ReflectionClass($container->getDefinition($id)->getClass()))->getShortName());
+
+                $variables[$variable] = new Reference($id);
             }
         }
 

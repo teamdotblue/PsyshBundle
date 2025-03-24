@@ -111,6 +111,15 @@ services:
 > `Psy\Command\ReflectingCommand` or `Psy\Command\Command`.
 
 ### Adding custom variables
+
+It is possible to add custom variables to the shell via PHP attributes.
+The snippet below makes the service available as `$myController` in the shell.
+
+```php
+#[\TeamDotBlue\PsyshBundle\Attribute\AsPsyshVariable]
+class MyController {}
+```
+
 It is possible to add custom variables to the shell via configuration.
 Variables can be of any type, container parameters references (e.g. `%kernel.debug%`) or even services
 (prefixed with `@`, e.g. `"@my_service"`).

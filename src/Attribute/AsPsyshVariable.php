@@ -9,7 +9,8 @@ use Attribute;
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 class AsPsyshVariable
 {
-    public function __construct(public string $variable)
+    /** If no variable is given, the name of the class will be used as variable name */
+    public function __construct(public ?string $variable = null)
     {
     }
 }
