@@ -3,20 +3,13 @@
     "description": "A port of the PHP REPL PsySH for Symfony.",
     "license": "MIT",
     "type": "symfony-bundle",
-    "keywords": [
-        "console",
-        "psysh",
-        "shell",
-        "REPL",
-        "symfony",
-        "interactive"
-    ],
+    "keywords": ["console", "psysh", "shell", "REPL", "symfony", "interactive"],
     "require": {
         "php": ">=8.2",
         "psy/psysh": "^0.11 || ^0.12",
-        "symfony/error-handler": "^6.4 || ^7.0",
-        "symfony/expression-language": "^6.4 || ^7.0",
-        "symfony/framework-bundle": "^6.4 || ^7.0"
+        "symfony/error-handler": "^6.4 || ^7.0 || ^8.0",
+        "symfony/expression-language": "^6.4 || ^7.0 || ^8.0",
+        "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.8",
@@ -29,9 +22,7 @@
         "psr-4": {
             "TeamDotBlue\\PsyshBundle\\": "src"
         },
-        "files": [
-            "src/psysh.php"
-        ]
+        "files": ["src/psysh.php"]
     },
     "autoload-dev": {
         "psr-4": {
