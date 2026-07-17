@@ -48,7 +48,7 @@ final class PsyshFacade
         self::$shell::debug(array_merge(self::$shell->getScopeVariables(), $variables), $bind);
     }
 
-    public function setContainer(ContainerInterface $container = null): void
+    public function setContainer(?ContainerInterface $container = null): void
     {
         self::$container = $container;
     }
