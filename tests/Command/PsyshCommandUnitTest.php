@@ -14,19 +14,18 @@ namespace TeamDotBlue\PsyshBundle\Test\Command;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psy\Shell;
+use ReflectionClass;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TeamDotBlue\PsyshBundle\Command\PsyshCommand;
-
-use function is_a;
 
 #[CoversClass(PsyshCommand::class)]
 class PsyshCommandUnitTest extends TestCase
 {
     public function testIsASymfonyCommand(): void
     {
-        $this->assertTrue(is_a(PsyshCommand::class, Command::class, true));
+        $this->assertTrue((new ReflectionClass(PsyshCommand::class))->isSubclassOf(Command::class));
     }
 
     public function testConfiguration(): void

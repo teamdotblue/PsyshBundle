@@ -4,7 +4,14 @@ parameters:
     - src/
     - tests/
     ignoreErrors:
-    - path: 'src/DependencyInjection/Configuration'
+    - path: 'src/DependencyInjection/Configuration.php'
       message: '#Call to an undefined method .+children#'
-    - path: 'src/PsyshBundle'
+      reportUnmatched: false
+    - path: 'tests/Command/PsyshCommandIntegrationTest.php'
+      message: '#Call to function method_exists\(\) with .+ and ''addCommand'' will always evaluate to (true|false)#'
+      reportUnmatched: false
+    - path: 'tests/Command/PsyshCommandIntegrationTest.php'
+      message: '#Call to an undefined method .+Application::(add|addCommand)\(\)#'
+      reportUnmatched: false
+    - path: 'src/PsyshBundle.php'
       message: '#ReflectionClass\): void given#'
