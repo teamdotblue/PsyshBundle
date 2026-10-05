@@ -11,24 +11,27 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                symfony-version:
-                  - '^6.0'
-                  - '^7.0'
+                include:
+                  - symfony-version: '^6.0'
+                    php-version: '8.3'
+                  - symfony-version: '^7.0'
+                    php-version: '8.3'
+                  - symfony-version: '^8.0'
+                    php-version: '8.4'
+        env:
+            SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
         steps:
             - name: 'Checkout code'
               uses: actions/checkout@v2.3.3
 
             - name: 'Install PHP with extensions'
-              uses: shivammathur/setup-php@2.7.0
+              uses: shivammathur/setup-php@v2
               with:
                   coverage: xdebug
-                  php-version: '8.3'
+                  php-version: ${{ matrix.php-version }}
                   tools: composer:v2
                   extensions: mbstring
                   ini-values: date.timezone=UTC
-
-            - name: Export Symfony version ${{ matrix.symfony }}
-              run: export SYMFONY_REQUIRE=${{ matrix.symfony }}
 
             - name: Install symfony/flex
               run: composer require --dev --no-progress --no-scripts --no-plugins symfony/flex
@@ -43,24 +46,27 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                symfony-version:
-                - '^6.0'
-                - '^7.0'
+                include:
+                - symfony-version: '^6.0'
+                  php-version: '8.3'
+                - symfony-version: '^7.0'
+                  php-version: '8.3'
+                - symfony-version: '^8.0'
+                  php-version: '8.4'
+        env:
+            SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
         steps:
         - name: 'Checkout code'
           uses: actions/checkout@v2.3.3
 
         - name: 'Install PHP with extensions'
-          uses: shivammathur/setup-php@2.7.0
+          uses: shivammathur/setup-php@v2
           with:
               coverage: none
-              php-version: '8.3'
+              php-version: ${{ matrix.php-version }}
               tools: composer:v2
               extensions: mbstring
               ini-values: date.timezone=UTC
-
-        - name: Export Symfony version ${{ matrix.symfony }}
-          run: export SYMFONY_REQUIRE=${{ matrix.symfony }}
 
         - name: Install symfony/flex
           run: composer require --dev --no-progress --no-scripts --no-plugins symfony/flex
