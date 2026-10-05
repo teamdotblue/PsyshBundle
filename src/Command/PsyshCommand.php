@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace TeamDotBlue\PsyshBundle\Command;
 
 use Psy\Shell;
-use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArgvInput;

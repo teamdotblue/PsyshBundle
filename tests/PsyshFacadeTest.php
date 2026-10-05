@@ -24,7 +24,6 @@ class PsyshFacadeTest extends KernelTestCase
         static::bootKernel();
         PsyshFacade::init();
         $shellReflection = (new ReflectionClass(PsyshFacade::class))->getProperty('shell');
-        $shellReflection->setAccessible(true);
         $this->assertNotNull($shellReflection->getValue());
     }
 }

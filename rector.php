@@ -15,10 +15,9 @@ return RectorConfig::configure()
         LevelSetList::UP_TO_PHP_82,
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
-        SetList::STRICT_BOOLEANS,
         SetList::CODE_QUALITY,
         SetList::CODING_STYLE,
-        PHPUnitSetList::PHPUNIT_100,
+        PHPUnitSetList::COMPOSER_BASED,
     ])
     ->withPhpVersion(PhpVersion::PHP_83)
     ->withImportNames()

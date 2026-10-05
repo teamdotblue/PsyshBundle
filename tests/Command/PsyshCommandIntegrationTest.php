@@ -13,12 +13,14 @@ namespace TeamDotBlue\PsyshBundle\Test\Command;
 
 use Symfony\Component\DependencyInjection\Container;
 use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use Psy\Shell;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use TeamDotBlue\PsyshBundle\Command\PsyshCommand;
 
 use function array_keys;
+use function method_exists;
 
 #[CoversNothing]
 class PsyshCommandIntegrationTest extends KernelTestCase
@@ -55,12 +57,16 @@ class PsyshCommandIntegrationTest extends KernelTestCase
         $this->assertInstanceOf(Container::class, $this->shell->getScopeVariable('container'));
     }
 
+    #[DoesNotPerformAssertions]
     public function testFindShell(): void
     {
         $application = new Application(self::$kernel);
-        $application->add($this->command);
-        $application->find('psysh');
+        if (method_exists($application, 'addCommand')) {
+            $application->addCommand($this->command);
+        } else {
+            $application->add($this->command);
+        }
 
-        $this->addToAssertionCount(1);
+        $application->find('psysh');
     }
 }
